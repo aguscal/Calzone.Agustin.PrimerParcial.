@@ -9,57 +9,37 @@ namespace Entidades
 {
     public class Negocio
     {
-        private List<Producto> listaProductos = new List<Producto>();
+        private static Negocio instancia = null;
+
+        private List<Producto> listaProductos;
         const int cantidadMaximaStock = 10;
+        string nombreArchivoListaProductos;
 
-        static Negocio()
+        public static Negocio Instancia
         {
-            
-            Monitor monitor1 = new Monitor(EMarcas.Asus.ToString(),EModelosMonitorAsus.Tuf1.ToString(),EColores.Negro.ToString(),100000, 17.5F, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.FullHd.ToString());
-            Monitor monitor2 = new Monitor(EMarcas.Asus.ToString(),EModelosMonitorAsus.Tuf1.ToString(),EColores.Negro.ToString(),100000, 17.5F, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.FullHd.ToString());
-            Monitor monitor3 = new Monitor(EMarcas.Asus.ToString(),EModelosMonitorAsus.Tuf1.ToString(),EColores.Negro.ToString(),100000, 17.5F, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.FullHd.ToString());
-            Monitor monitor4 = new Monitor(EMarcas.Asus.ToString(),EModelosMonitorAsus.Tuf1.ToString(),EColores.Negro.ToString(),100000, 17.5F, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.FullHd.ToString());
+            get
+            {
+                if(instancia is null)
+                {
+                    instancia = new Negocio();
+                }
 
-            Monitor monitor5 = new Monitor(EMarcas.Philips.ToString() ,EModelosMonitorPhilips.PhilipsKlga.ToString(),EColores.Negro.ToString(),80000, 22, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.Hd.ToString());
-            Monitor monitor6 = new Monitor(EMarcas.Philips.ToString() ,EModelosMonitorPhilips.PhilipsKlga.ToString(),EColores.Negro.ToString(),80000, 22, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.Hd.ToString());
-            Monitor monitor7 = new Monitor(EMarcas.Philips.ToString() ,EModelosMonitorPhilips.PhilipsKlga.ToString(),EColores.Negro.ToString(),80000, 22, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.Hd.ToString());
-            Monitor monitor8 = new Monitor(EMarcas.Philips.ToString() ,EModelosMonitorPhilips.PhilipsKlga.ToString(),EColores.Negro.ToString(),80000, 20, false,EPanelMonitor.Led.ToString(),120,ETipoPuerto.Hdmi.ToString(),EResolucionesMonitor.Hd.ToString());
-
-
-            Auricular auricular1 = new Auricular(EModelosAurJbl.tune110.ToString(),EMarcas.Jbl.ToString(),EColores.Blanco.ToString(),8000,true,20,60,true,true);
-            Auricular auricular2 = new Auricular(EModelosAurJbl.tune110.ToString(),EMarcas.Jbl.ToString(),EColores.Blanco.ToString(),8000,true,20,60,true,true);
-            Auricular auricular3 = new Auricular(EModelosAurJbl.tune110.ToString(),EMarcas.Jbl.ToString(),EColores.Blanco.ToString(),8000,true,20,60,true,true);
-            Auricular auricular4 = new Auricular(EModelosAurJbl.tune110.ToString(),EMarcas.Jbl.ToString(),EColores.Blanco.ToString(),8000,true,20,60,true,true);
-
-            Auricular auricular5 = new Auricular(EModelosAurSony.Sony150.ToString(),EMarcas.Sony.ToString(),EColores.Negro.ToString(),15000,true,40,80,true,true);
-            Auricular auricular6 = new Auricular(EModelosAurSony.Sony150.ToString(),EMarcas.Sony.ToString(),EColores.Negro.ToString(),15000,true,40,80,true,true);
-            
-            SmartPhone smartPhone1 = new SmartPhone(EModeloSmartPhoneSamsung.GalaxyA34.ToString(),EMarcas.Samsung.ToString(),EColores.Gris.ToString(),300000,128,7,50,4500,6);
-            SmartPhone smartPhone2 = new SmartPhone(EModeloSmartPhoneSamsung.GalaxyA34.ToString(),EMarcas.Samsung.ToString(),EColores.Gris.ToString(),300000,128,7,50,4500,6);
-
-            SmartPhone smartPhone3 = new SmartPhone(EModeloSmartPhoneMotorola.Edge40.ToString(),EMarcas.Motorola.ToString(),EColores.Celeste.ToString(),450000,240,9,80,5500,8);
-            SmartPhone smartPhone4 = new SmartPhone(EModeloSmartPhoneSamsung.GalaxyA34.ToString(),EMarcas.Samsung.ToString(),EColores.Gris.ToString(),300000,128,7,50,4500,8);
-            
-            /*
-             + 
-            listaProductos.Add(monitor1);
-            listaProductos.Add(monitor1);//3 monitores1
-            listaProductos.Add(monitor1);
-            listaProductos.Add(monitor2);
-            listaProductos.Add(monitor2);
-            listaProductos.Add(monitor2);
-            listaProductos.Add(monitor2);
-            listaProductos.Add(auricular1);
-            listaProductos.Add(auricular2);
-            listaProductos.Add(auricular3);
-            listaProductos.Add(auricular1);
-            listaProductos.Add(auricular1);
-            listaProductos.Add(auricular4);
-            listaProductos.Add(auricular11);
-            listaProductos.Add(auricular111);
-            */
+                return instancia;
+            }
+        }
+        public List<Producto> ListaProductos
+        {
+            get { return ClaseSerializadora.LeerListaProductosJson(nombreArchivoListaProductos); }
+        }
+        private Negocio()
+        {
+            nombreArchivoListaProductos = "ListaProductos.json";
+            /*listaProductos = new List<Producto>();       
+            ClaseSerializadora.EscribirListaProductosJson(listaProductos, nombreArchivoListaProductos);*/
+            listaProductos = ClaseSerializadora.LeerListaProductosJson(nombreArchivoListaProductos);
         }
 
+       
         public static bool operator ==(Negocio n, Producto p)
         {
             if (n.ObtenerCantidadProductosEncontrados(n, p) > 0)
@@ -75,13 +55,20 @@ namespace Entidades
             return !(n == p);
         }
 
-        private int ObtenerCantidadProductosEncontrados(Negocio n, Producto p)
+        /*Retorna la cantidad de un producto dado como parametro
+        la cantidad de ese producto la necesito para despues en la sobrecarga del + y -
+        saber que si no esta no puede restar y si esta comparar con el limite de stock para poder agregar
+        porque de lo contrario solo podria agregar uno de cada producto
+        si retorna 0 quiere decir que no habia ese producto en la lista
+        si retorna  > 0 entonces esta retornando la cantidad de ese producto
+        public int ObtenerCantidadProductosEncontrados(Negocio n, Producto p)*/
+        public int ObtenerCantidadProductosEncontrados(Negocio n, Producto p)
         {
             int contadorProductosEncontrados = 0;
 
             if (n is not null && p is not null)
             {
-                foreach (var item in n.listaProductos)
+                foreach (var item in n.ListaProductos)
                 {
                     if (p is Auricular && item is Auricular)
                     {
@@ -107,12 +94,9 @@ namespace Entidades
                 }
             }
 
-            return contadorProductosEncontrados;// si retorna 0 quiere decir que no habia ese producto en la lista
-                                                // si retorna  > 0 entonces esta retornando la cantidad de ese producto
-                                                //la cantidad de ese producto la necesito para despues en la sobrecarga del + y -
-                                                //saber que si no esta no puede restar y si esta comparar con el limite de stock para poder agregar
-                                                //porque de lo contrario solo podria agregar uno de cada producto
+            return contadorProductosEncontrados;
         }
+
 
         public static bool operator +(Negocio n, Producto p)
         {
@@ -123,12 +107,14 @@ namespace Entidades
                     if (n.ObtenerCantidadProductosEncontrados(n, p) < cantidadMaximaStock)//verificar que no supere el maximo
                     {
                         n.listaProductos.Add(p);//lo agrega
+                        ClaseSerializadora.EscribirListaProductosJson(n.listaProductos, "ListaProductos.json");
                         return true;
                     }
                 }
                 else
                 {
                     n.listaProductos.Add(p);//si no esta en la lista lo agrega
+                    ClaseSerializadora.EscribirListaProductosJson(n.listaProductos, "ListaProductos.json");
                     return true;
                 }
 
@@ -138,62 +124,139 @@ namespace Entidades
             return false;
         }
 
+
+        //lo que hace ahora es priemero buscar un producto que coincida por id y eliminarlo,
+        //si no puede elimina un coincidente o retorna false
         public static bool operator -(Negocio n, Producto p)
         {
             if (n is not null && p is not null)
             {
-                foreach (var item in n.listaProductos)
+                if (n != p)
                 {
-                    if (item.Equals(p))
+                    return false;
+                }
+                else
+                {                   
+                    Producto productoBuscado;
+
+                    productoBuscado = n.BuscarProductoPorId(p);
+                    if(productoBuscado is not null)
                     {
-                        n.listaProductos.Remove(p);
+                        Console.WriteLine(productoBuscado.Id);
+                        n.listaProductos.Remove(productoBuscado);
+
+                        ClaseSerializadora.EscribirListaProductosJson(n.listaProductos, "ListaProductos.json");
                         return true;
+                    }
+                    else
+                    {
+                        productoBuscado = n.ObtenerBuscarProductoCoincidente(p);
+
+                        if (productoBuscado is not null)
+                        {
+                            Console.WriteLine(productoBuscado.Id);
+                            n.listaProductos.Remove(productoBuscado);
+
+                            ClaseSerializadora.EscribirListaProductosJson(n.listaProductos, "ListaProductos.json");
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }                                     
+                }                
+            }
+            else
+            {               
+                return false;
+            }
+        }
+
+        public Producto BuscarProductoPorId(Producto p)
+        {
+            foreach (var producto in ListaProductos)
+            {
+                if (p.Equals(producto))
+                {
+                    return producto;
+                }
+            }
+
+            return null;
+        }
+
+        //retorna el primer producto coincidente
+        public Producto ObtenerBuscarProductoCoincidente(Producto p)
+        {
+            foreach(var producto in ListaProductos)
+            {
+                if (p is Auricular && producto is Auricular)
+                {
+                    if ((Auricular)producto == (Auricular)p)
+                    {
+                        return producto;
+                    }
+                }
+                else if (p is Monitor && producto is Monitor)
+                {
+                    if ((Monitor)producto == (Monitor)p)
+                    {
+                        return producto;
+                    }
+                }
+                else if (p is SmartPhone && producto is SmartPhone)
+                {
+                    if ((SmartPhone)producto == (SmartPhone)p)
+                    {
+                        return producto;
                     }
                 }
             }
-            else
-            {
-                return false;
-            }
-
-            return false;
+            
+            return null;
         }
 
-        /*
-        private List<Producto> CopiarLista(List<Producto> listaOriginal)
+        public List<Producto> ObtenerListaProductosCoincidentes(Producto productoABuscar)
         {
-            List<Producto> listaAux = new List<Producto>();
+            List<Producto> listaAuxProducto = new List<Producto>();
 
-            foreach(var item in listaOriginal)
+            foreach (var producto in ListaProductos)
             {
-                listaAux.Add(item);    
+                if (productoABuscar is Auricular && producto is Auricular)
+                {
+                    if ((Auricular)productoABuscar == (Auricular)producto)
+                    {
+                        listaAuxProducto.Add(producto);
+                    }
+                }
+                else if (productoABuscar is Monitor && producto is Monitor)
+                {
+                    if ((Monitor)productoABuscar == (Monitor)producto)
+                    {
+                        listaAuxProducto.Add(producto);
+                    }
+                }
+                else if (productoABuscar is SmartPhone && producto is SmartPhone)
+                {
+                    if ((SmartPhone)productoABuscar == (SmartPhone)producto)
+                    {
+                        listaAuxProducto.Add(producto);                       
+                    }
+                }
             }
 
-            return listaAux;
+            return listaAuxProducto;
         }
-
-        public void AgregarProductosAlStock(Negocio n,Producto p,int cantidadProductos)
-        {
-            int cantidadProductosParaAgregar = cantidadMaximaStock - ObtenerCantidadProductosEncontrados(n,p) ;
-            List<Producto> listaAux = CopiarLista(listaProductos);
-
-            for (int i = 0; i < cantidadProductosParaAgregar; i++)
-            {
-                Producto producto = new Producto();
-                listaAux.Add()
-            }
-        }
-        */
-
         public List<Producto> ObtenerListaproductosFiltrados(string categoria)//las opciones que se pueden
                                                                               //ingresar son solo las que ser el toString() de
                                                                               //las derivadas
         {
             List<Producto> auxListProductos = new List<Producto>();
 
-            foreach (var producto in listaProductos)
+            foreach (var producto in ObtenerListaProductosSinRepetir())
             {
-                if (producto.ToString() == categoria)
+                if (producto.GetType().Name == categoria)
                 {
                     auxListProductos.Add(producto);
                 }
@@ -202,22 +265,48 @@ namespace Entidades
             return auxListProductos;
         }
 
-
-
         public List<Producto> ObtenerListaproductosFiltrados(string categoria, string marca)
         {
 
             List<Producto> auxListProductos = new List<Producto>();
 
-            foreach (var producto in listaProductos)
+            foreach (var producto in ObtenerListaProductosSinRepetir())
             {
-                if (producto.ToString() == categoria && producto.Marca == marca)
+                if (producto.GetType().Name == categoria && producto.Marca == marca)
                 {
                     auxListProductos.Add(producto);
                 }
             }
 
             return auxListProductos;
+        }
+
+        public List<string> ObtenerMarcasSegunCategoria(string categoria)
+        {
+            List<string> list = new List<string>();
+            
+            if (categoria == "Auricular")
+            {
+                foreach(var marca in Enum.GetValues(typeof (EMarcasAuricular)))
+                {
+                    list.Add(marca.ToString());
+                }
+            }else if(categoria == "Monitor")
+            {
+                foreach (var marca in Enum.GetValues(typeof(EMarcasMonitor)))
+                {
+                    list.Add(marca.ToString());
+                }
+            }
+            else if (categoria == "SmartPhone")
+            {
+                foreach (var marca in Enum.GetValues(typeof(EMarcasSmartPhone)))
+                {
+                    list.Add(marca.ToString());
+                }
+            }
+
+            return list;
         }
 
         //Este metodo recibe una lista que ya esta filtrada o solo por categoria o por marca 
@@ -236,34 +325,161 @@ namespace Entidades
             }
         }
 
-        //Aca tengo que poder hacer el agregar y quitarle objetos a la lista de productos u coleccion
-
-        //para crear un objeto , osea agregar un nuevo producto no habra restriccion , ya que los estoy creando 
-        //solo me dan las caracteristicas del producto y creo esa cantidad de productos y los agrego a la lista
-
-        //para vender productos o consultar stock , si tengo que tener un metodo o algo qeu me diga cuanto hay de ese producto
-        //que es un producto que voy a buscar si es que tengo en el stock mediante esos parametros que me pasan
-        //otra opcion es tener un diccionario donde operar con esos valores constantemente
-
-        //un metodo va a ser para vende ya que implica disminuir ese producto de la lista 
-        //intentar hacer el metodo consultar stock
-
-
-        public bool Venderproducto(string tipoproducto, string marca, string modelo, string color, Producto auxProducto)
+        public List<Producto> ObtenerListaProductosSinRepetir()
         {
-            bool sePudoVender = false;
+            List<Producto> auxListaProduct = new List<Producto>();
 
-            foreach (var item in listaProductos)
+            foreach (var productoStock in ListaProductos)
             {
-                if (item.Marca == marca && item.Modelo == modelo && item.Color == color)
+                bool encontrado = false;
+                foreach (var productoUnico in auxListaProduct)
                 {
-                    auxProducto = item;
-                    sePudoVender = true;
-                    break;
+                    if (productoStock is Auricular && productoUnico is Auricular)
+                    {
+                        if ((Auricular)productoUnico == (Auricular)productoStock)
+                        {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    else if (productoStock is Monitor && productoUnico is Monitor)
+                    {
+                        if ((Monitor)productoUnico == (Monitor)productoStock)
+                        {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    else if (productoStock is SmartPhone && productoUnico is SmartPhone)
+                    {
+                        if ((SmartPhone)productoUnico == (SmartPhone)productoStock)
+                        {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Si no se encuentra, agregarlo a la lista de productos únicos
+                if (!encontrado)
+                {
+                    auxListaProduct.Add(productoStock);
+                }
+
+            }
+
+            return auxListaProduct;
+        }
+
+
+        public int ObtenerCantidadDelProductoIgualesEnLista(List<Producto> listaProductos, Producto producto)
+        {
+            int contadorProductosEncontrados = 0;
+
+            if (listaProductos is not null && producto is not null)
+            {
+                foreach (var item in listaProductos)
+                {
+                    if (producto is Auricular && item is Auricular)
+                    {
+                        if ((Auricular)item == (Auricular)producto)
+                        {
+                            contadorProductosEncontrados += 1;
+                        }
+                    }
+                    else if (producto is Monitor && item is Monitor)
+                    {
+                        if ((Monitor)item == (Monitor)producto)
+                        {
+                            contadorProductosEncontrados += 1;
+                        }
+                    }
+                    else if (producto is SmartPhone && item is SmartPhone)
+                    {
+                        if ((SmartPhone)item == (SmartPhone)producto)
+                        {
+                            contadorProductosEncontrados += 1;
+                        }
+                    }
                 }
             }
 
-            return sePudoVender;
+            return contadorProductosEncontrados;
         }
+
+        //busca si esta el producto pasado por parametro y de ser asi , lo quita de la lista de stock y retorna true
+        //caso contrario si no esta el producto retorna false
+        //podria hacer una sobrecarga que reciba una cantidad por si quiere comprar varios  productos iguales
+        public bool VenderProducto(Producto productoAVender)
+        {
+            int cantidadStockProductoRecibido = ObtenerCantidadDelProductoIgualesEnLista(ListaProductos, productoAVender);
+
+            if(cantidadStockProductoRecibido > 0)
+            {
+                bool sePudoVender = this - productoAVender;
+
+                return sePudoVender;
+            }
+            
+            return false;            
+        }
+
+        public bool ModificarPrecioProductosCoincidentes(Producto productoACambiar,float precio)
+        {
+            if(ObtenerListaProductosCoincidentes(productoACambiar) is not null && ObtenerListaProductosCoincidentes(productoACambiar).Count > 0)
+            {
+                foreach(var producto in ObtenerListaProductosCoincidentes(productoACambiar))
+                {
+                    foreach(var productoEnLista in listaProductos)
+                    {
+                        if(producto == productoEnLista)
+                        {
+                            productoEnLista.Precio = precio;
+                        }                       
+                    }
+                                 
+                }
+                ClaseSerializadora.EscribirListaProductosJson(listaProductos, nombreArchivoListaProductos);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool EliminarTodoElStockProductosCoincidentes(Producto productoAEliminar)
+        {
+            List<Producto> listaProductosAEliminar = ObtenerListaProductosCoincidentes(productoAEliminar);
+
+            foreach(var producto in listaProductosAEliminar)
+            {
+                bool retorno = this - producto;
+                if(retorno == false)
+                {
+                    return false;
+                }
+            }
+
+            ClaseSerializadora.EscribirListaProductosJson(listaProductos, nombreArchivoListaProductos);
+            return true;
+            
+        }
+
+        public float ObtenerPrecioProductoEnLista(Producto productoBuscado)
+        {
+            float precio = 0;
+
+            foreach (var producto in listaProductos)
+            {
+                if(producto == productoBuscado)
+                {
+                    return producto.Precio;
+                }
+            }
+
+            return precio;
+        }
+
     }
 }

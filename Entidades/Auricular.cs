@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -18,6 +20,10 @@ namespace Entidades
         bool conMicrofono;
         bool inEar;
 
+        public Auricular()
+        {
+
+        }
         public Auricular(string modelo, string marca, string color,float precio,bool cancelacionDeSonido,int dB,int hZ,
             bool conMicrofono,bool inEar)
             : base(marca, modelo, color,precio)
@@ -46,12 +52,21 @@ namespace Entidades
         {
             this.esInalambrico = esInalambrico;
             this.horasBateria = horasBateria;
-            this.tiempoDeCarga = tiempoDeCarga;          
+            this.tiempoDeCarga = tiempoDeCarga;
         }
+        public bool CancelacionDeSonido { get { return cancelacionDeSonido; } set { cancelacionDeSonido = value; } }
+        public bool EsInalambrico { get { return esInalambrico; } set { esInalambrico = value; } }
+        public bool EsGamer { get { return esGamer; } set { esGamer = value; } }
+        public bool ConMicrofono { get { return conMicrofono; } set { conMicrofono = value; } }
+        public bool InEar { get { return inEar; } set { inEar = value; } }
+        public int Db { get { return dB; } set { dB = value; } }
+        public int Hz { get { return hZ; } set { hZ = value; } }
+        public int HorasBateria { get { return horasBateria; } set { horasBateria = value; } }
+        public int TiempoDeCarga { get { return tiempoDeCarga; } set { tiempoDeCarga = value; } }
 
         public override string ToString()
         {
-            return $"{this.GetType().Name}";
+            return MostrarInfo();
         }
 
         public override bool Equals(object? obj)
@@ -66,7 +81,14 @@ namespace Entidades
             return false;
         }
 
-
+        /// <summary>
+        /// Este método verifica si dos productos son iguales.
+        /// Primero compara por id mediante la sobrecarga del equals.
+        /// Luego de no ser asi verifica si los atributos clave de cada objeto son iguales entre si
+        /// </summary>
+        /// <param name="a1">Primer Auricular.</param>
+        /// <param name="a2">Segundo Auricular.</param>
+        /// <returns>Retorna bool si son iguales,false de lo contrario.</returns>
         public static bool operator ==(Auricular a1, Auricular a2)
         {
             if (a1.Equals(a2))
@@ -93,7 +115,7 @@ namespace Entidades
         public override string MostrarInfo()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(this.ToString());
+            sb.Append(this.GetType().Name);
 
             if (esGamer)
             {
@@ -114,9 +136,9 @@ namespace Entidades
                 sb.Append($" Vincha");
             }
             
-            sb.Append($" {base.MostrarInfo()}");
+            sb.Append($"{base.MostrarInfo()}");
             sb.Append($" {color}");
-            sb.AppendLine($" ${Precio}");
+            sb.Append($" \n${Precio}");
 
             return sb.ToString();
         }

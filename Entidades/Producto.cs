@@ -1,7 +1,21 @@
 ﻿using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [JsonDerivedType(typeof(Producto))]
+    [JsonDerivedType(typeof(Auricular))]
+    [JsonDerivedType(typeof(SmartPhone))]
+    [JsonDerivedType(typeof(Monitor))]
+    /// <summary>
+    /// Esta es la clase base de los tipos derivados: Monitor,Auricular,Smartphone
+    /// Establece atributos base, tiene una serie de constructores
+    /// Maneja los numeros de id de todos los productos que se creen
+    /// </summary>
     public abstract class Producto
     {
         private string marca;
@@ -10,13 +24,15 @@ namespace Entidades
         private string modelo;
         protected string color;
         private float precio;
-        private bool enOferta;//
 
-        public string Marca { get { return marca; } }
-        public int Id { get { return id; } }
-        public float Precio { get { return precio; } set{ precio = value; } }
-        public string Modelo { get { return modelo; } }
-        public string Color { get { return color; } }
+        public int Id { get { return id; } set { id = value; } }
+        public int SiguienteId { get { return siguienteId; } set { siguienteId = value; } }
+        public string Tipo { get { return this.GetType().Name; } }
+        public string Marca { get { return marca; } set { marca = value; } }
+        public string Modelo { get { return modelo; } set { modelo = value; } }
+        public string Color { get { return color; } set { color = value; } }
+        public float Precio { get { return precio; } set { precio = value; } }
+        
 
         public string NombreCompleto
         {
@@ -28,9 +44,9 @@ namespace Entidades
             siguienteId = 0;
         }
 
-        private Producto()
+        public Producto()
         {
-            this.enOferta = false;
+
         }
 
         public Producto(string marca, string modelo, string color, float precio):this()
@@ -40,12 +56,6 @@ namespace Entidades
             this.color = color;
             this.precio = precio;
             id = ++siguienteId;            
-        }
-
-        public Producto(string marca, string modelo, string color, float precio, bool enOferta)
-            :this(marca,modelo,color,precio)
-        {
-            this.enOferta = enOferta;
         }
 
         public override string ToString()
@@ -90,21 +100,11 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.Append($" {NombreCompleto}");
-            sb.Append($" Numero de Id: {Id}");// SACAR ESTO , esto es solo para ver si anda
 
             return sb.ToString();
         }
 
         public abstract string MostrarDescripcion();// cada producto tiene sus propias cosas a mostrar como descripcion
 
-        public void ModificarOferta()
-        {
-
-        }
-
-        public void MostrarOferta()
-        {
-            
-        }
     }
 }

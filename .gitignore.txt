@@ -1,0 +1,2 @@
+.vs/
+.vs/Calzone.Agustin/FileContentIndex/*.vsidx

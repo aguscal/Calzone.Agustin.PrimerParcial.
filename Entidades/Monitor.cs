@@ -1,19 +1,28 @@
 ﻿using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 namespace Entidades
 {
     public class Monitor:Producto
     {
-        float pulgadas;
+        int pulgadas;
         bool esCurvo;
-        string tipoPanel;//ips u oled , 
-        int tazaDeRefresco;//60 Hz, 120 Hz, 144 Hz, 200 Hz y 240 Hz.
-        string tipoPuerto;//vga o hdmi
-        string resolucion;//hd , full hd , 4k , vga
+        string tipoPanel; 
+        int tazaDeRefresco;
+        string tipoPuerto;
+        string resolucion;
         bool esGamer;
-        bool tieneAltavoz;//si o no
+        bool tieneAltavoz;
 
-        public Monitor(string marca, string modelo, string color, float precio, float pulgadas, bool esCurvo, string tipoPanel,
+        public Monitor()
+        {
+
+        }
+        public Monitor(string marca, string modelo, string color, float precio, int pulgadas, bool esCurvo, string tipoPanel,
             int tazaRefresco, string tipoPuerto, string resolucion)
             : base(marca, modelo, color, precio)
         {
@@ -27,23 +36,31 @@ namespace Entidades
             this.tieneAltavoz = false;
         }
 
-        public Monitor(string marca, string modelo, string color, float precio, float pulgadas, bool esCurvo, string tipoPanel,
+        public Monitor(string marca, string modelo, string color, float precio, int pulgadas, bool esCurvo, string tipoPanel,
             int tazaRefresco, string tipoPuerto, string resolucion,bool esGamer)
             : this(marca, modelo, color, precio,pulgadas,esCurvo,tipoPanel,tazaRefresco,tipoPuerto,resolucion)
         {
             this.esGamer = esGamer;
         }
 
-        public Monitor(string marca, string modelo, string color, float precio, float pulgadas, bool esCurvo, string tipoPanel,
+        public Monitor(string marca, string modelo, string color, float precio, int pulgadas, bool esCurvo, string tipoPanel,
             int tazaRefresco, string tipoPuerto, string resolucion, bool esGamer,bool tieneAltavoz)
             : this(marca, modelo, color, precio, pulgadas, esCurvo, tipoPanel, tazaRefresco, tipoPuerto, resolucion,esGamer)
         {
             this.tieneAltavoz = tieneAltavoz;
         }
 
+        public string TipoPanel { get { return tipoPanel; } set { tipoPanel = value; } }
+        public string TipoPuerto { get { return tipoPuerto; } set { tipoPuerto = value; } }
+        public string Resolucion { get { return resolucion; } set { resolucion = value; } }
+        public int Pulgadas { get { return pulgadas; } set { pulgadas = value; } }
+        public int TazaDeRefresco { get { return tazaDeRefresco; } set { tazaDeRefresco = value; } }
+        public bool EsCurvo { get { return esCurvo; } set { esCurvo = value; } }
+        public bool EsGamer { get { return esGamer; } set { esGamer = value; } }
+        public bool TieneAltavoz { get { return tieneAltavoz; } set { tieneAltavoz = value; } }
         public override string ToString()
         {
-            return $"{this.GetType().Name}";
+            return MostrarInfo();
         }
         public override bool Equals(object? obj)
         {
@@ -57,7 +74,15 @@ namespace Entidades
             return false;
         }
 
-        public static bool operator ==(Monitor m1, Monitor m2)//tambien podria crear un codigo unico para cada tipo de producto , y comparar solo eso, crearlo cuando no hay ninguno
+        /// <summary>
+        /// Este método verifica si dos productos son iguales.
+        /// Primero compara por id mediante la sobrecarga del equals.
+        /// Luego de no ser asi verifica si los atributos clave de cada objeto son iguales entre si
+        /// </summary>
+        /// <param name="m1">Primer Monitor.</param>
+        /// <param name="m2">Segundo Monitor.</param>
+        /// <returns>Retorna bool si son iguales,false de lo contrario.</returns>
+        public static bool operator ==(Monitor m1, Monitor m2)
         {
             if (m1.Equals(m2))//tienen mismo id, son iguales
             {
@@ -83,8 +108,8 @@ namespace Entidades
         public override string MostrarInfo()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(this.ToString());
-            sb.Append($" {base.MostrarInfo()}");
+            sb.Append(this.GetType().Name);
+            sb.Append($"{base.MostrarInfo()}");
             sb.Append($" {pulgadas} Pulgadas");
             sb.Append($" {resolucion}");
             if (esGamer)
@@ -96,8 +121,6 @@ namespace Entidades
             {
                 sb.Append($" Curvo");
             }
-
-            sb.AppendLine($" ${Precio}");
 
             return sb.ToString();
         }
@@ -115,11 +138,5 @@ namespace Entidades
 
             return sb.ToString();
         }
-
-        public override Producto copiarParametrosProducto()
-        {
-            Monitor auxMonitor = new Monitor(this.Marca,this.Modelo,this.color,this.Precio,this.pulgadas,this.)
-        }
-
     }
 }

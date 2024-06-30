@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -16,7 +17,10 @@ namespace Entidades
         bool dualSim;//opcional
         bool incluyeCargador;//opcional
 
+        public SmartPhone()
+        {
 
+        }
         public SmartPhone(string modelo, string marca, string color,float precio,int almacenamiento,float pulgadasPantalla,int pixelesCamara,int bateria,int memoriaRam)
             : base(marca, modelo, color, precio)
         {
@@ -44,9 +48,17 @@ namespace Entidades
             this.incluyeCargador = incluyeCargador;
         }
 
+        public int Almacenamiento { get { return almacenamiento; } set { almacenamiento = value; } }
+        public int MemoriaRam { get { return memoriaRam; } set { memoriaRam = value; } }
+        public int PixelesCamara { get { return pixelesCamara; } set { pixelesCamara = value; } }
+        public int CapacidadBateria { get { return capacidadBateria; } set { capacidadBateria = value; } }
+        public bool DualSim { get { return dualSim; } set { dualSim = value; } }
+        public bool IncluyeCargador { get { return incluyeCargador; } set { incluyeCargador = value; } }
+        public float PulgadasPantalla { get { return pulgadasPantalla; } set { pulgadasPantalla = value; } }
+
         public override string ToString()
         {
-            return $"{this.GetType().Name}";
+            return MostrarInfo();
         }
 
         public override bool Equals(object? obj)
@@ -61,6 +73,14 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Este método verifica si dos productos son iguales.
+        /// Primero compara por id mediante la sobrecarga del equals.
+        /// Luego de no ser asi verifica si los atributos clave de cada objeto son iguales entre si
+        /// </summary>
+        /// <param name="s1">Primer smartphone.</param>
+        /// <param name="s2">Segundo smartphone.</param>
+        /// <returns>Retorna bool si son iguales,false de lo contrario.</returns>
         public static bool operator ==(SmartPhone s1, SmartPhone s2)
         {
             if (s1.Equals(s2))
@@ -88,11 +108,12 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine(this.ToString());
-            sb.Append($" {base.MostrarInfo()}");
+            sb.Append(this.GetType().Name);
+            sb.Append($"{base.MostrarInfo()}");
             sb.Append($" {almacenamiento} Gb");
             sb.Append($" {color}");
-            sb.AppendLine($" ${Precio}");
+            sb.Append($" {memoriaRam} Gb Ram");
+            sb.AppendLine($" \n${Precio}");
 
             return sb.ToString();
         }

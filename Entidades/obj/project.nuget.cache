@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GRU70ryRtsvhyA1pIBj/eCJ5aqJHTreCWpOyD8tr/9O1zx5kI65SCzyyxtxwYZYsii6Sk2rj+LqIGip3V0evZA==",
+  "dgSpecHash": "RCGnikwcDibu8p4KTMRXO+aHt+r/FqUbqJcVSdUrWR4Z7EaZvanGXI16+4OduP0vAqxbMcmPFO4PnTuaYbi+gQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Entidades.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

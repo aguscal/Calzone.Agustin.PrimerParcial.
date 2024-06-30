@@ -11,13 +11,35 @@ namespace Entidades
         Samsung,
         Philips,
         Motorola,
-        Tcl,
         Jbl,
         Xiaomi,
         Apple,
         LG,
         Asus,
         Sony
+    }
+
+    public enum EMarcasSmartPhone
+    {
+        Samsung,
+        Motorola,
+        Xiaomi,
+        Apple
+    }
+
+    public enum EMarcasAuricular
+    {
+        Samsung,
+        Sony,
+        Jbl,
+    }
+
+    public enum EMarcasMonitor
+    { 
+        Asus,
+        Lg,
+        Philips,
+        Samsung
     }
 
     public enum EColores
@@ -101,6 +123,12 @@ namespace Entidades
     {
         LgFlatron1,
         LgFlatron2
+    }
+
+    public enum EModelosMonitorSamsung
+    {
+        SamsungMonitorEye1,
+        SamsungMonitorEye2
     }
 
     public enum EPanelMonitor
