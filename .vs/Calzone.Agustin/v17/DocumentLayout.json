@@ -3,44 +3,76 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductoauricular.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductoauricular.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductosmartphone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductosmartphone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductomonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductomonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductomonitor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductomonitor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductoauricular.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductoauricular.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductoauricular.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductoauricular.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\formcomprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\formcomprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\enumerados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\enumerados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmvisualizadorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmvisualizadorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\comprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\comprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\claseserializadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\claseserializadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmvisualizadorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmvisualizadorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\comprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\comprador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}|probarcosas\\probarcosas.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\probarcosas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}|probarcosas\\probarcosas.csproj|solutionrelative:probarcosas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmtrabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\vistauifrm\\frmcrearproductomonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}|VistaUIFrm\\VistaUIFrm.csproj|solutionrelative:vistauifrm\\frmcrearproductomonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\excepciondatosincompletos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\excepciondatosincompletos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|c:\\users\\admin\\desktop\\ejercicios\\calzone.agustin\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79936DDA-8970-4989-8B6D-36A993B4DBE8}|Entidades\\Entidades.csproj|solutionrelative:entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,75 +82,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "FrmTrabajador.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmTrabajador.cs",
-              "RelativeDocumentMoniker": "VistaUIFrm\\FrmTrabajador.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmTrabajador.cs",
-              "RelativeToolTip": "VistaUIFrm\\FrmTrabajador.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAAHsAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T03:55:12.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "ClaseSerializadora.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\ClaseSerializadora.cs",
               "RelativeDocumentMoniker": "Entidades\\ClaseSerializadora.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\ClaseSerializadora.cs",
               "RelativeToolTip": "Entidades\\ClaseSerializadora.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAqwEkAAAApAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAqwF0AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-30T03:21:30.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\Form1.cs",
               "RelativeDocumentMoniker": "VistaUIFrm\\Form1.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\Form1.cs",
               "RelativeToolTip": "VistaUIFrm\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAoAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAwwEAAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-30T03:32:50.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FrmVisualizadorLog.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmVisualizadorLog.cs",
-              "RelativeDocumentMoniker": "VistaUIFrm\\FrmVisualizadorLog.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmVisualizadorLog.cs [Dise\u00F1o]",
-              "RelativeToolTip": "VistaUIFrm\\FrmVisualizadorLog.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T03:40:31.785Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmVisualizadorLog.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmVisualizadorLog.cs",
-              "RelativeDocumentMoniker": "VistaUIFrm\\FrmVisualizadorLog.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmVisualizadorLog.cs",
-              "RelativeToolTip": "VistaUIFrm\\FrmVisualizadorLog.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T03:52:47.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 17,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Usuario.cs",
               "RelativeDocumentMoniker": "Entidades\\Usuario.cs",
@@ -131,54 +125,195 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Comprador.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Comprador.cs",
               "RelativeDocumentMoniker": "Entidades\\Comprador.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Comprador.cs",
               "RelativeToolTip": "Entidades\\Comprador.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAywBwAAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-30T04:14:11.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "Trabajador.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Trabajador.cs",
               "RelativeDocumentMoniker": "Entidades\\Trabajador.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Trabajador.cs",
               "RelativeToolTip": "Entidades\\Trabajador.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAADwvyAAAAAFAAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAACAAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-30T04:14:31.522Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Enumerados.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Enumerados.cs",
-              "RelativeDocumentMoniker": "Entidades\\Enumerados.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Enumerados.cs",
-              "RelativeToolTip": "Entidades\\Enumerados.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAMAAAA",
+              "DocumentIndex": 0,
+              "Title": "FrmCrearProductoAuricular.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACYAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T04:27:07.44Z",
+              "WhenOpened": "2024-06-30T20:25:01.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 16,
+              "Title": "ExcepcionDatosIncompletos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\ExcepcionDatosIncompletos.cs",
+              "RelativeDocumentMoniker": "Entidades\\ExcepcionDatosIncompletos.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\ExcepcionDatosIncompletos.cs",
+              "RelativeToolTip": "Entidades\\ExcepcionDatosIncompletos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T20:38:50.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmCrearProductoAuricular.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.Designer.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoAuricular.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.Designer.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoAuricular.Designer.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAuwGQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T20:46:47.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FrmCrearProductoAuricular.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoAuricular.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoAuricular.cs [Dise\u00F1o]",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoAuricular.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T20:47:02.535Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmCrearProductoMonitor.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAOYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T21:15:46.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FrmCrearProductoMonitor.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoMonitor.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.cs [Dise\u00F1o]",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoMonitor.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T21:18:28.448Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmCrearProductoSmartPhone.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoSmartPhone.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoSmartPhone.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoSmartPhone.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoSmartPhone.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAANkAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T21:51:01.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FrmTrabajador.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmTrabajador.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmTrabajador.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmTrabajador.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmTrabajador.cs",
+              "ViewState": "AQIAANsAAAAAAAAAAAAAAOwAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T21:59:30.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Producto.cs",
+              "RelativeDocumentMoniker": "Entidades\\Producto.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Producto.cs",
+              "RelativeToolTip": "Entidades\\Producto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGoAAAB3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T22:56:48.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Negocio.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Negocio.cs",
               "RelativeDocumentMoniker": "Entidades\\Negocio.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\Entidades\\Negocio.cs",
               "RelativeToolTip": "Entidades\\Negocio.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAlAAAA",
+              "ViewState": "AQIAAOMAAAAAAAAAAAAAABUAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T04:29:12.735Z",
+              "WhenOpened": "2024-06-30T23:03:20.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\probarcosas\\Program.cs",
+              "RelativeDocumentMoniker": "probarcosas\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\probarcosas\\Program.cs",
+              "RelativeToolTip": "probarcosas\\Program.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAiwBEAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T23:17:56.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormComprador.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FormComprador.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FormComprador.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FormComprador.cs",
+              "RelativeToolTip": "VistaUIFrm\\FormComprador.cs",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAAAKMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T00:20:06.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmCrearProductoMonitor.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.Designer.cs",
+              "RelativeDocumentMoniker": "VistaUIFrm\\FrmCrearProductoMonitor.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Ejercicios\\Calzone.Agustin\\VistaUIFrm\\FrmCrearProductoMonitor.Designer.cs",
+              "RelativeToolTip": "VistaUIFrm\\FrmCrearProductoMonitor.Designer.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAAFwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T00:47:00.356Z",
               "EditorCaption": ""
             }
           ]

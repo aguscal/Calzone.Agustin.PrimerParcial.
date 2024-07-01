@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaUIFrm", "VistaUIFrm\VistaUIFrm.csproj", "{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "probarcosas", "probarcosas\probarcosas.csproj", "{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E5CB0D-0F71-4C18-90C5-89DEC2883FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B473A24-AE8C-4F9F-B715-C7D984FBC2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
