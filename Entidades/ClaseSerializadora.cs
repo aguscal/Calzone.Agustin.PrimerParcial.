@@ -13,10 +13,6 @@ namespace Entidades
 {
     public static class ClaseSerializadora
     {
-        static ClaseSerializadora()
-        {
-            
-        }
 
         static public void EscribirUsuariosJson(List<Usuario> listaUsuarios, string nombreArchivo)
         {
@@ -74,6 +70,32 @@ namespace Entidades
                 escribirArchivo.WriteLine(lineaLog);
             }
         }
+
+
+        static public int ObtenerSiguienteId()
+        {
+            int ultimoId = 0;
+
+            using (StreamReader sr = new StreamReader("ListaProductos.json"))
+            {
+                string archivoLeido = sr.ReadToEnd();
+                JsonSerializerSettings configuracionesJson = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
+                List<Producto> listaDeSerializada = JsonConvert.DeserializeObject<List<Producto>>(archivoLeido, configuracionesJson);
+
+                if(listaDeSerializada.Count > 0)
+                {
+                    Producto ultimoProducto = listaDeSerializada[listaDeSerializada.Count - 1];
+                    ultimoId = ultimoProducto.Id;
+                }
+
+                return ultimoId;
+            }
+        }
+
+
+
+
 
         static public void EscribirUsuariosXml(List<Usuario> listaUsuarios,string nombreArchivo)
         {           

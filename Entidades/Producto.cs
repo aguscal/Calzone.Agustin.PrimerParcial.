@@ -26,7 +26,7 @@ namespace Entidades
         private float precio;
 
         public int Id { get { return id; } set { id = value; } }
-        public int SiguienteId { get { return siguienteId; } set { siguienteId = value; } }
+        public static int SiguienteId { get { return siguienteId; } set { siguienteId = value; } }
         public string Tipo { get { return this.GetType().Name; } }
         public string Marca { get { return marca; } set { marca = value; } }
         public string Modelo { get { return modelo; } set { modelo = value; } }
@@ -41,7 +41,7 @@ namespace Entidades
 
         static Producto()
         {
-            siguienteId = 0;
+            siguienteId = ClaseSerializadora.ObtenerSiguienteId();
         }
 
         public Producto()
@@ -105,6 +105,5 @@ namespace Entidades
         }
 
         public abstract string MostrarDescripcion();// cada producto tiene sus propias cosas a mostrar como descripcion
-
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VistaUIFrm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6c87d1c7a08c543f556df31a2e4a4f3405a229f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8877ec5d022cad8745d3e11916698f823a45a03d")]
 [assembly: System.Reflection.AssemblyProductAttribute("VistaUIFrm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VistaUIFrm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

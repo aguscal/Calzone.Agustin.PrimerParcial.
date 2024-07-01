@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entidades.Producto">
+    <Position X="1.25" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACACABAAACAQAAAEgAAAAABQAAAAEADAAAgAgAAoAiQ=</HashCode>
+      <FileName>Producto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Auricular">
+    <Position X="4.25" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAEEAkACBABAAEkAAAAACAAgEIgABACQAAAAEBAiA=</HashCode>
+      <FileName>Auricular.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Monitor">
+    <Position X="7" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAEBAACBAQAQEgCAEAAAgAAAEAABECgAABAoAAiA=</HashCode>
+      <FileName>Monitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.SmartPhone">
+    <Position X="10" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAiAAAAICAAQAAEgAAEGAAABBgAAABAAAAAAIAAAiA=</HashCode>
+      <FileName>SmartPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
