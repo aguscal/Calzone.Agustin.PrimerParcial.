@@ -19,19 +19,19 @@ namespace Entidades
     public abstract class Producto
     {
         private string marca;
-        private int id;
-        static int siguienteId;
+        protected int id;
         private string modelo;
         protected string color;
         private float precio;
+        protected int cantidad;
 
         public int Id { get { return id; } set { id = value; } }
-        public static int SiguienteId { get { return siguienteId; } set { siguienteId = value; } }
-        public string Tipo { get { return this.GetType().Name; } }
         public string Marca { get { return marca; } set { marca = value; } }
         public string Modelo { get { return modelo; } set { modelo = value; } }
         public string Color { get { return color; } set { color = value; } }
         public float Precio { get { return precio; } set { precio = value; } }
+
+        public int Cantidad { get { return cantidad; } set { cantidad = value; } }
         
 
         public string NombreCompleto
@@ -41,7 +41,7 @@ namespace Entidades
 
         static Producto()
         {
-            siguienteId = ClaseSerializadora.ObtenerSiguienteId();
+
         }
 
         public Producto()
@@ -55,7 +55,7 @@ namespace Entidades
             this.modelo = modelo;
             this.color = color;
             this.precio = precio;
-            id = ++siguienteId;            
+            this.cantidad = 1;           
         }
 
         public override string ToString()

@@ -63,6 +63,8 @@
             panelIncluyeCargador = new Panel();
             lbl = new Label();
             checkBIncluyeCargador = new CheckBox();
+            lblCantidadCrear = new Label();
+            nUDCantidadCrear = new NumericUpDown();
             panelMarcas.SuspendLayout();
             panelModelos.SuspendLayout();
             panelColores.SuspendLayout();
@@ -75,12 +77,13 @@
             panel1.SuspendLayout();
             panelDualSim.SuspendLayout();
             panelIncluyeCargador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).BeginInit();
             SuspendLayout();
             // 
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.PaleGreen;
-            btnAgregar.Location = new Point(226, 299);
+            btnAgregar.Location = new Point(253, 299);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(99, 50);
             btnAgregar.TabIndex = 0;
@@ -91,7 +94,7 @@
             // btnCancelar
             // 
             btnCancelar.BackColor = Color.LightSalmon;
-            btnCancelar.Location = new Point(345, 299);
+            btnCancelar.Location = new Point(358, 299);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(99, 50);
             btnCancelar.TabIndex = 1;
@@ -398,11 +401,34 @@
             checkBIncluyeCargador.Text = "Incluye cargador";
             checkBIncluyeCargador.UseVisualStyleBackColor = true;
             // 
+            // lblCantidadCrear
+            // 
+            lblCantidadCrear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCantidadCrear.ForeColor = Color.Teal;
+            lblCantidadCrear.Location = new Point(202, 273);
+            lblCantidadCrear.Name = "lblCantidadCrear";
+            lblCantidadCrear.Size = new Size(129, 23);
+            lblCantidadCrear.TabIndex = 22;
+            lblCantidadCrear.Text = "Cantidad a crear:";
+            // 
+            // nUDCantidadCrear
+            // 
+            nUDCantidadCrear.Location = new Point(337, 273);
+            nUDCantidadCrear.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nUDCantidadCrear.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nUDCantidadCrear.Name = "nUDCantidadCrear";
+            nUDCantidadCrear.ReadOnly = true;
+            nUDCantidadCrear.Size = new Size(120, 23);
+            nUDCantidadCrear.TabIndex = 23;
+            nUDCantidadCrear.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // FrmCrearProductoSmartPhone
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 361);
+            Controls.Add(nUDCantidadCrear);
+            Controls.Add(lblCantidadCrear);
             Controls.Add(panelIncluyeCargador);
             Controls.Add(panelDualSim);
             Controls.Add(panel1);
@@ -433,6 +459,7 @@
             panel1.ResumeLayout(false);
             panelDualSim.ResumeLayout(false);
             panelIncluyeCargador.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).EndInit();
             ResumeLayout(false);
         }
 
@@ -473,5 +500,7 @@
         private Panel panelIncluyeCargador;
         private Label lbl;
         private CheckBox checkBIncluyeCargador;
+        private Label lblCantidadCrear;
+        private NumericUpDown nUDCantidadCrear;
     }
 }

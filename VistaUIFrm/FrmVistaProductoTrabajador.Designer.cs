@@ -173,21 +173,14 @@
             Controls.Add(rtbDescripcionProducto);
             Name = "FrmVistaProductoTrabajador";
             Text = "FrmVistaProductoTrabajador";
-            Activated += FrmVistaProductoTrabajador_Activated;
             Load += FrmVistaProductoTrabajador_Load;
-            Controls.SetChildIndex(lblInfoOpciones, 0);
-            Controls.SetChildIndex(btnCrearNuevoProducto, 0);
             Controls.SetChildIndex(btnAtras, 0);
-            Controls.SetChildIndex(lblNoHayProductosEnStock, 0);
-            Controls.SetChildIndex(panelFrmComprador, 0);
             Controls.SetChildIndex(rtbDescripcionProducto, 0);
             Controls.SetChildIndex(lblTituloProducto, 0);
             Controls.SetChildIndex(lblStock, 0);
             Controls.SetChildIndex(btnEliminarProductoStock, 0);
             Controls.SetChildIndex(btnModificarPrecioProducto, 0);
             Controls.SetChildIndex(lblPrecioProducto, 0);
-            panelFrmComprador.ResumeLayout(false);
-            panelFrmComprador.PerformLayout();
             ResumeLayout(false);
         }
 

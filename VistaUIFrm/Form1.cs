@@ -12,24 +12,37 @@ namespace VistaUIFrm
 
         private void FormIngreso_Load(object sender, EventArgs e)
         {
-            //esto no esta bien tal vez hacelo asi , encontrar una mejor manera
-            /*List<Usuario> listaUsuariosRegistrados;
-            string nombreArchivoUsuarios = "Usuarios.json";
+            List<Usuario> listaUsuariosRegistrados;
+            
+            try
+            {             
+                string nombreArchivoUsuarios = "Usuarios.json";
 
+                if (File.Exists(nombreArchivoUsuarios))
+                {
+                    listaUsuariosRegistrados = ClaseSerializadora.LeerListaUsuariosJson("Usuarios.json");
+                }
+                else
+                {
+                    listaUsuariosRegistrados = new List<Usuario>();
+                    listaUsuariosRegistrados.Add(new Comprador(1,"laraine0@gmail.com", "laraine123", "Laraine", "Steade"));
+                    listaUsuariosRegistrados.Add(new Comprador(2,"abdelttiero1@gmail.com", "abdel123", "Abdel", "Savattiero"));
+                    listaUsuariosRegistrados.Add(new Comprador(3,"denny2@gmail.com", "denny123", "Denny", "Chug"));
+                    listaUsuariosRegistrados.Add(new Comprador(4,"emmetf3@gmail.com", "Emet123", "Emmet", "Rolf"));
 
-            listaUsuariosRegistrados = new List<Usuario>();
-            listaUsuariosRegistrados.Add(new Comprador("laraine0@gmail.com", "laraine123", "Laraine", "Steade"));
-            listaUsuariosRegistrados.Add(new Comprador("abdelttiero1@gmail.com", "abdel123", "Abdel", "Savattiero"));
-            listaUsuariosRegistrados.Add(new Comprador("denny2@gmail.com", "denny123", "Denny", "Chug"));
-            listaUsuariosRegistrados.Add(new Comprador("emmetf3@gmail.com", "Emet123", "Emmet", "Rolf"));
+                    listaUsuariosRegistrados.Add(new Trabajador("rodrigo9@gmail.com", "rodri123", "Rodrigo", "Conibere", RolTrabajador.Administrador));
+                    listaUsuariosRegistrados.Add(new Trabajador("denysesnib@gmail.com", "denyse123", "Denyse", "Snibson", RolTrabajador.Supervisor));
+                    listaUsuariosRegistrados.Add(new Trabajador("jarviseale@gmail.com", "jarvis123", "Jarvis", "Seale", RolTrabajador.Vendedor));
 
-            listaUsuariosRegistrados.Add(new Trabajador("rodrigo9@gmail.com", "rodri123", "Rodrigo", "Conibere", 129929));
-            listaUsuariosRegistrados.Add(new Trabajador("denysesnib@gmail.com", "denyse123", "Denyse", "Snibson", 197857));
-            listaUsuariosRegistrados.Add(new Trabajador("jarviseale@gmail.com", "jarvis123", "Jarvis", "Seale", 210080));
-
-            //serializar a json
-            ClaseSerializadora.EscribirUsuariosJson(listaUsuariosRegistrados, nombreArchivoUsuarios);*/
-            listaUsuariosRegistrados = ClaseSerializadora.LeerListaUsuariosJson("Usuarios.json");
+                    //serializar a json
+                    ClaseSerializadora.EscribirUsuariosJson(listaUsuariosRegistrados, nombreArchivoUsuarios);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un error al buscar el usuario.Intente mas tarde!");
+            }
+            
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -39,46 +52,68 @@ namespace VistaUIFrm
             if (Verificadora.VerificarEscrituraEmail(txbEmail.Text) && Verificadora.VerificarEscrituraContrasenia(txbContrasenia.Text))
             {
                 //analizo si se encuentra registrado en el json
-                Usuario usurioRegistrado = Verificadora.VerificarUsuarioRegistrado(this.txbEmail.Text, this.txbContrasenia.Text);
-
-                if (usurioRegistrado is not null)
+                try
                 {
-                    MessageBox.Show("El ingreso coincide con un registro");
-                    if(usurioRegistrado is Comprador)
+                    Usuario usuarioRegistrado = Verificadora.VerificarUsuarioRegistrado(this.txbEmail.Text, this.txbContrasenia.Text);
+
+                    if (usuarioRegistrado is not null)
                     {
-                        DateTime fechaActual = DateTime.Now;
-                        string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
-                        lineaLog = $"El comprador llamado: {usurioRegistrado.Nombre} {usurioRegistrado.Apellido}, con mail: {usurioRegistrado.Email} ,accedio al sistema a las: {fechaFormateada}";
-                        ClaseSerializadora.EscribirArchivoLog(lineaLog);
-
-                        FrmComprador frmComprador = new FrmComprador(usurioRegistrado);
-                        frmComprador.ShowDialog();
-
-                        if (frmComprador.DialogResult == DialogResult.Cancel)
+                        if (usuarioRegistrado is Comprador)
                         {
-                            this.DialogResult = DialogResult.Cancel;
+                            DateTime fechaActual = DateTime.Now;
+                            string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
+                            lineaLog = $"El comprador llamado: {usuarioRegistrado.Nombre} {usuarioRegistrado.Apellido}, con mail: {usuarioRegistrado.Email} ,accedio al sistema a las: {fechaFormateada}";
+                            try
+                            {
+                                ClaseSerializadora.EscribirArchivoLog(lineaLog);
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Ocurrio un error al guardar el ingreso");
+                            }
+                            
+
+                            FrmComprador frmComprador = new FrmComprador(usuarioRegistrado);
+                            frmComprador.ShowDialog();
+
+                            if (frmComprador.DialogResult == DialogResult.Cancel)
+                            {
+                                this.DialogResult = DialogResult.Cancel;
+                            }
                         }
-                    }else if (usurioRegistrado is Trabajador)
-                    {
-                        DateTime fechaActual = DateTime.Now;
-                        string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
-                        lineaLog = $"El trabajador llamado: {usurioRegistrado.Nombre} {usurioRegistrado.Apellido}, con mail: {usurioRegistrado.Email} ,accedio al sistema a las: {fechaFormateada}";
-                        ClaseSerializadora.EscribirArchivoLog(lineaLog);
-
-                        FrmTrabajador frmComprador = new FrmTrabajador(usurioRegistrado);
-                        frmComprador.ShowDialog();
-
-                        if (frmComprador.DialogResult == DialogResult.Cancel)
+                        else if (usuarioRegistrado is Trabajador)
                         {
-                            this.DialogResult = DialogResult.Cancel;
+                            DateTime fechaActual = DateTime.Now;
+                            string fechaFormateada = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
+                            lineaLog = $"El trabajador {((Trabajador)usuarioRegistrado).Rol.ToString()} llamado: {usuarioRegistrado.Nombre} {usuarioRegistrado.Apellido}, con mail: {usuarioRegistrado.Email} ,accedio al sistema a las: {fechaFormateada}";
+                            try
+                            {
+                                ClaseSerializadora.EscribirArchivoLog(lineaLog);
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Ocurrio un error al guardar el ingreso");
+                            }
+
+                            FormTrabajador frmTrabajador = new FormTrabajador(usuarioRegistrado);
+                            frmTrabajador.ShowDialog();
+
+                            if (frmTrabajador.DialogResult == DialogResult.Cancel)
+                            {
+                                this.DialogResult = DialogResult.Cancel;
+                            }
                         }
                     }
-                    
+                    else
+                    {
+                        MessageBox.Show("Usuario no registrado");
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Usuario no registrado");
+                    MessageBox.Show("Ocurrio un error al buscar el usuario.Intente mas tarde!");
                 }
+                
             }
             else
             {
@@ -89,7 +124,6 @@ namespace VistaUIFrm
         {
             this.txbEmail.Text = "laraine0@gmail.com";
             this.txbContrasenia.Text = "laraine123";
-            //controlar que cada vez que se haga click no duplicar forms
         }
         private void btnTrabajador_Click(object sender, EventArgs e)
         {
@@ -104,8 +138,7 @@ namespace VistaUIFrm
             if(resultado == DialogResult.No)
             {
                 e.Cancel = true;
-            }
-            
+            }            
         }
     }
 }

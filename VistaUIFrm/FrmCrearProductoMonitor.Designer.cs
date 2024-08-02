@@ -66,6 +66,8 @@
             panel6 = new Panel();
             lblResolucion = new Label();
             comboBResolucion = new ComboBox();
+            lblCantidadCrear = new Label();
+            nUDCantidadCrear = new NumericUpDown();
             panelMarcas.SuspendLayout();
             panelModelos.SuspendLayout();
             panelColores.SuspendLayout();
@@ -79,6 +81,7 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).BeginInit();
             SuspendLayout();
             // 
             // btnAgregar
@@ -430,11 +433,34 @@
             comboBResolucion.Size = new Size(121, 23);
             comboBResolucion.TabIndex = 2;
             // 
+            // lblCantidadCrear
+            // 
+            lblCantidadCrear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCantidadCrear.ForeColor = Color.Teal;
+            lblCantidadCrear.Location = new Point(202, 273);
+            lblCantidadCrear.Name = "lblCantidadCrear";
+            lblCantidadCrear.Size = new Size(129, 23);
+            lblCantidadCrear.TabIndex = 22;
+            lblCantidadCrear.Text = "Cantidad a crear:";
+            // 
+            // nUDCantidadCrear
+            // 
+            nUDCantidadCrear.Location = new Point(337, 273);
+            nUDCantidadCrear.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nUDCantidadCrear.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nUDCantidadCrear.Name = "nUDCantidadCrear";
+            nUDCantidadCrear.ReadOnly = true;
+            nUDCantidadCrear.Size = new Size(120, 23);
+            nUDCantidadCrear.TabIndex = 23;
+            nUDCantidadCrear.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // FrmCrearProductoMonitor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 361);
+            Controls.Add(nUDCantidadCrear);
+            Controls.Add(lblCantidadCrear);
             Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(panel4);
@@ -467,6 +493,7 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).EndInit();
             ResumeLayout(false);
         }
 
@@ -510,5 +537,7 @@
         private Panel panel6;
         private Label lblResolucion;
         private ComboBox comboBResolucion;
+        private Label lblCantidadCrear;
+        private NumericUpDown nUDCantidadCrear;
     }
 }

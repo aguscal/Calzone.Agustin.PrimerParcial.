@@ -69,6 +69,8 @@
             panel8 = new Panel();
             lblInalambrico = new Label();
             checkBInalambrico = new CheckBox();
+            nUDCantidadCrear = new NumericUpDown();
+            lblCantidadCrear = new Label();
             panelMarcas.SuspendLayout();
             panelModelos.SuspendLayout();
             panelColores.SuspendLayout();
@@ -87,6 +89,7 @@
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).BeginInit();
             SuspendLayout();
             // 
             // btnAgregar
@@ -460,11 +463,34 @@
             checkBInalambrico.UseVisualStyleBackColor = true;
             checkBInalambrico.CheckedChanged += checkBInalambrico_CheckedChanged;
             // 
+            // nUDCantidadCrear
+            // 
+            nUDCantidadCrear.Location = new Point(337, 270);
+            nUDCantidadCrear.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nUDCantidadCrear.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nUDCantidadCrear.Name = "nUDCantidadCrear";
+            nUDCantidadCrear.ReadOnly = true;
+            nUDCantidadCrear.Size = new Size(120, 23);
+            nUDCantidadCrear.TabIndex = 20;
+            nUDCantidadCrear.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // lblCantidadCrear
+            // 
+            lblCantidadCrear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCantidadCrear.ForeColor = Color.Teal;
+            lblCantidadCrear.Location = new Point(202, 270);
+            lblCantidadCrear.Name = "lblCantidadCrear";
+            lblCantidadCrear.Size = new Size(129, 23);
+            lblCantidadCrear.TabIndex = 21;
+            lblCantidadCrear.Text = "Cantidad a crear:";
+            // 
             // FrmCrearProductoAuricular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 361);
+            Controls.Add(lblCantidadCrear);
+            Controls.Add(nUDCantidadCrear);
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel6);
@@ -503,6 +529,7 @@
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nUDCantidadCrear).EndInit();
             ResumeLayout(false);
         }
 
@@ -549,5 +576,7 @@
         private Panel panel8;
         private Label lblInalambrico;
         private CheckBox checkBInalambrico;
+        private NumericUpDown nUDCantidadCrear;
+        private Label lblCantidadCrear;
     }
 }

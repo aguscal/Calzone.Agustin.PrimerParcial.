@@ -10,38 +10,53 @@ namespace Entidades
 {
     public class Comprador:Usuario
     {
-        List<Producto> listaCarritoProductos;
+        Dictionary<Producto, int> dictCarrito;
+        int idComprador;
         public Comprador()
         {
-
+            dictCarrito = new Dictionary<Producto, int>();
         }
 
-        public Comprador(string mail,string pass,string nombre,string apellido) :base(mail,pass,nombre, apellido)
+        public Comprador(int idComprador,string mail,string pass,string nombre,string apellido) :base(mail,pass,nombre, apellido)
         {
-            listaCarritoProductos = new List<Producto>();
+            this.idComprador = idComprador;
+            dictCarrito = new Dictionary<Producto, int>();
         }
 
-        public List<Producto> ListaCarrito
+        public Dictionary<Producto, int> DictCarrito
         {
-            get { return listaCarritoProductos; }
-            set { listaCarritoProductos = value; }
+            get { return dictCarrito; }
+            set { dictCarrito = value; }
         }
+
+        public int IdComprador
+        {
+            get { return idComprador; }
+            set { idComprador = value; }
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append(base.ToString());
-            sb.AppendLine($"Lista carrito: {listaCarritoProductos}");
+            sb.AppendLine($"Lista carrito: {dictCarrito}");
 
             return sb.ToString();
         }
 
-
-        public bool AgregarProductoAlCarrito(Producto productoSeleccionado,Negocio negocioStock)
+        public bool AgregarProductoAlCarrito(Producto productoSeleccionado, Negocio negocioStock)
         {
-            if(negocioStock == productoSeleccionado)
+            if (negocioStock == productoSeleccionado)//el producto seleccionado esta en el negocio
             {
-                listaCarritoProductos.Add(productoSeleccionado);
+                if (dictCarrito.ContainsKey(productoSeleccionado))//verifica si el producto ya esta en el carrito
+                { 
+                    dictCarrito[productoSeleccionado] += 1;//aumenta la cantidad del producto
+                }
+                else
+                {
+                    dictCarrito.Add(productoSeleccionado, 1);//agrega el producto al diccionario y le da valor de 1
+                }                                
             }
             else
             {
@@ -49,6 +64,17 @@ namespace Entidades
             }
 
             return true;
+        }
+
+
+        public void DisminuirQuitarProductoDelCarrito(Producto productoSeleccionado)//el producto seleccionado esta en el carrito, por lo cual tiene qeu ser mas de 0 unidades
+        {
+            dictCarrito[productoSeleccionado] -= 1;//disminuye en uno la cantidad del producto en el carrito
+                
+            if(dictCarrito[productoSeleccionado] == 0)//si la cantidad del producto en carrito pasa a ser 0 se elimina del carrito
+            {
+                dictCarrito.Remove(productoSeleccionado);
+            }
         }
     }
 }

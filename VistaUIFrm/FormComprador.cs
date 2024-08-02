@@ -13,13 +13,21 @@ namespace VistaUIFrm
 {
     public partial class FrmComprador : Form
     {
-        protected Negocio miNegocio = Negocio.Instancia;
+        protected Negocio miNegocio;
         protected Usuario usuarioRegistrado;
         protected bool formClosingActivado = false;
-
+        string nombreCategoria = String.Empty;
         public FrmComprador()
         {
             InitializeComponent();
+            try
+            {
+                miNegocio = Negocio.Instancia;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error grave de conexion");
+            }
         }
         public FrmComprador(Usuario usuarioRegistrado) : this()
         {
@@ -28,13 +36,13 @@ namespace VistaUIFrm
 
         private void FormComprador_Load(object sender, EventArgs e)
         {
-            if(this.cmbFiltrarListaPrecio.Items.Count < 2)
+            if (this.cmbFiltrarListaPrecio.Items.Count < 2)
             {
                 this.cmbFiltrarListaPrecio.Items.Add("Menor precio");
                 this.cmbFiltrarListaPrecio.Items.Add("Mayor precio");
             }
 
-            this.dgvProductos.DataSource = miNegocio.ObtenerListaProductosSinRepetir();
+            ActualizarVistaProductos();
 
             if (this.dgvProductos.Columns.Contains("Id"))
             {
@@ -64,49 +72,117 @@ namespace VistaUIFrm
 
         protected virtual void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //tengo que obtener el producto al que se le dio click
-            //tengo que crear un formulario en el que se muestre mas info del producto
-            //tengo que darle la oportunidad de cargarlo al carrito o comprarlo-1
-
             if (e.RowIndex >= 0)
-            {               
-                Producto productoClickeado = (Producto)dgvProductos.Rows[e.RowIndex].DataBoundItem;
+            {
+                if (dgvProductos.Rows[e.RowIndex].DataBoundItem is Producto)
+                {
+                    Producto productoClickeado = (Producto)dgvProductos.Rows[e.RowIndex].DataBoundItem;
 
-                this.Hide();
-                FrmVistaProducto frmVistaProducto = new FrmVistaProducto(productoClickeado, usuarioRegistrado, miNegocio);
-                frmVistaProducto.ShowDialog();
-                if (frmVistaProducto.DialogResult == DialogResult.Ignore)
-                {
-                    frmVistaProducto.Close();
-                    this.Show();
-                }
-                else
-                {
-                    formClosingActivado = true;
-                    this.Close();
+                    this.Hide();
+                    FrmVistaProducto frmVistaProducto = new FrmVistaProducto(productoClickeado, usuarioRegistrado, miNegocio);
+                    frmVistaProducto.ShowDialog();
+                    if (frmVistaProducto.DialogResult == DialogResult.Ignore)
+                    {
+                        frmVistaProducto.Close();
+
+                        ActualizarVistaProductos();
+                        this.Show();
+                    }
+                    else
+                    {
+                        formClosingActivado = true;
+                        this.Close();
+                    }
                 }
             }
-            
         }
 
         protected void smartPhonesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OcultarYMostrarFrmCategoriaProductos("SmartPhone");
+            try
+            {
+                if (miNegocio is not null)
+                {
+                    this.dgvProductos.DataSource = miNegocio.ObtenerListaproductosFiltrados("SmartPhone");
+
+                    this.nombreCategoria = "SmartPhone";
+                    this.cmbMarcas.Items.Clear();
+                    this.cmbFiltrarListaPrecio.SelectedIndex = -1;
+                    foreach (var marca in miNegocio.ObtenerMarcasSegunCategoria("SmartPhone"))
+                    {
+                        this.cmbMarcas.Items.Add(marca);
+                    }
+                }
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error al mostrar los productos: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error al mostrar los productos");
+            }
         }
 
         private void auricularesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OcultarYMostrarFrmCategoriaProductos("Auricular");
+            try
+            {
+                if (miNegocio is not null)
+                {
+                    this.dgvProductos.DataSource = miNegocio.ObtenerListaproductosFiltrados("Auricular");
+
+                    this.nombreCategoria = "Auricular";
+                    this.cmbMarcas.Items.Clear();
+                    this.cmbFiltrarListaPrecio.SelectedIndex = -1;
+                    foreach (var marca in miNegocio.ObtenerMarcasSegunCategoria("Auricular"))
+                    {
+                        this.cmbMarcas.Items.Add(marca);
+                    }
+                }
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error al mostrar los productos: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error al mostrar los productos");
+            }
         }
 
         private void monitoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OcultarYMostrarFrmCategoriaProductos("Monitor");
+            try
+            {
+                if (miNegocio is not null)
+                {
+                    this.dgvProductos.DataSource = miNegocio.ObtenerListaproductosFiltrados("Monitor");
+
+                    this.nombreCategoria = "Monitor";
+                    this.cmbMarcas.Items.Clear();
+                    this.cmbFiltrarListaPrecio.SelectedIndex = -1;
+                    foreach (var marca in miNegocio.ObtenerMarcasSegunCategoria("Monitor"))
+                    {
+                        this.cmbMarcas.Items.Add(marca);
+                    }
+                }
+
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error al mostrar los productos: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error al mostrar los productos");
+            }
+
         }
 
         private void cmbFiltrarListaPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFiltrarListaPrecio.SelectedItem != null)
+            if (cmbFiltrarListaPrecio.SelectedItem != null && this.dgvProductos.DataSource != null)
             {
                 if (cmbFiltrarListaPrecio.SelectedItem.ToString() == "Menor precio")
                 {
@@ -120,11 +196,6 @@ namespace VistaUIFrm
             }
         }
 
-        protected void FiltrarListaPrecioDesdeFormDerivado()
-        {
-            cmbFiltrarListaPrecio_SelectedIndexChanged(this.cmbFiltrarListaPrecio, EventArgs.Empty);
-        }
-
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Ignore;
@@ -132,7 +203,7 @@ namespace VistaUIFrm
 
         protected void FrmComprador_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(this.DialogResult == DialogResult.Ignore)
+            if (this.DialogResult == DialogResult.Ignore)
             {
                 return;
             }
@@ -163,6 +234,8 @@ namespace VistaUIFrm
             if (frmGestionListaCarritoUsuario.DialogResult == DialogResult.Ignore)
             {
                 frmGestionListaCarritoUsuario.Close();
+
+                ActualizarVistaProductos();
                 this.Show();
             }
             else
@@ -172,23 +245,77 @@ namespace VistaUIFrm
             }
         }
 
-        private void OcultarYMostrarFrmCategoriaProductos(string categoria)
+        private void mostrarTodoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmCategoriaProductos frmCategoriaProductos = new FrmCategoriaProductos(usuarioRegistrado, categoria);
-            frmCategoriaProductos.ShowDialog();
+            ActualizarVistaProductos();
+        }
 
-            if (frmCategoriaProductos.DialogResult == DialogResult.Ignore)
+        private void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.cmbFiltrarListaPrecio.SelectedIndex = -1;
+            string opcionMarcaSeleccionada = this.cmbMarcas.SelectedItem.ToString();
+
+            if (string.IsNullOrEmpty(opcionMarcaSeleccionada) == false)
             {
-                frmCategoriaProductos.Close();
-                this.Show();
-            }
-            else
-            {
-                formClosingActivado = true;
-                this.Close();
+                try
+                {
+                    if (nombreCategoria == String.Empty)
+                    {
+                        this.dgvProductos.DataSource = miNegocio.ObtenerListaproductosFiltradosPorMarca(opcionMarcaSeleccionada);
+                    }
+                    else
+                    {
+                        this.dgvProductos.DataSource = miNegocio.ObtenerListaproductosFiltrados(nombreCategoria, opcionMarcaSeleccionada);
+                    }
+                }
+                catch (ExcepcionConeccion ex)
+                {
+                    MostrarError($"Error al mostrar los productos: {ex.Message}");
+                }
+                catch (Exception)
+                {
+                    MostrarError("Error al mostrar los productos");
+                }
+
             }
         }
-        
+
+        private void ActualizarVistaProductos()
+        {
+            try
+            {
+                if (miNegocio is not null)
+                {
+                    this.dgvProductos.DataSource = miNegocio.ListaProductos;
+                    this.cmbMarcas.Items.Clear();
+                    this.cmbFiltrarListaPrecio.SelectedIndex = -1;
+                    this.nombreCategoria = String.Empty;
+                    foreach (var marca in miNegocio.ObtenerTodasLasMarcas())
+                    {
+                        this.cmbMarcas.Items.Add(marca);
+                    }
+                }
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error al mostrar los productos: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error al mostrar los productos");
+            }
+
+        }
+
+        private void MostrarError(string mensaje)
+        {
+            MessageBox.Show($"{mensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnComprobantes_Click(object sender, EventArgs e)
+        {
+            FrmVisualizadorComprobante frmVisualizadorComprobante = new FrmVisualizadorComprobante(((Comprador)usuarioRegistrado).IdComprador);
+            frmVisualizadorComprobante.ShowDialog();
+        }
     }
 }

@@ -31,6 +31,10 @@
             lblTituloProducto = new Label();
             btnComprar = new Button();
             btnEliminarProductoCarrito = new Button();
+            nupdDisminuirCantidad = new NumericUpDown();
+            lblDisminuirCantidad = new Label();
+            btnDisminuirCantidad = new Button();
+            ((System.ComponentModel.ISupportInitialize)nupdDisminuirCantidad).BeginInit();
             SuspendLayout();
             // 
             // lblTituloProducto
@@ -66,11 +70,45 @@
             btnEliminarProductoCarrito.UseVisualStyleBackColor = false;
             btnEliminarProductoCarrito.Click += btnEliminarProductoCarrito_Click;
             // 
+            // nupdDisminuirCantidad
+            // 
+            nupdDisminuirCantidad.Location = new Point(321, 100);
+            nupdDisminuirCantidad.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nupdDisminuirCantidad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nupdDisminuirCantidad.Name = "nupdDisminuirCantidad";
+            nupdDisminuirCantidad.Size = new Size(120, 23);
+            nupdDisminuirCantidad.TabIndex = 3;
+            nupdDisminuirCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // lblDisminuirCantidad
+            // 
+            lblDisminuirCantidad.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDisminuirCantidad.Location = new Point(163, 100);
+            lblDisminuirCantidad.Name = "lblDisminuirCantidad";
+            lblDisminuirCantidad.Size = new Size(152, 23);
+            lblDisminuirCantidad.TabIndex = 4;
+            lblDisminuirCantidad.Text = "Disminuir Cantidad:";
+            // 
+            // btnDisminuirCantidad
+            // 
+            btnDisminuirCantidad.BackColor = Color.LemonChiffon;
+            btnDisminuirCantidad.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDisminuirCantidad.Location = new Point(282, 147);
+            btnDisminuirCantidad.Name = "btnDisminuirCantidad";
+            btnDisminuirCantidad.Size = new Size(187, 46);
+            btnDisminuirCantidad.TabIndex = 5;
+            btnDisminuirCantidad.Text = "Disminuir Cantidad";
+            btnDisminuirCantidad.UseVisualStyleBackColor = false;
+            btnDisminuirCantidad.Click += btnDisminuirCantidad_Click;
+            // 
             // FrmOpcionesSobreProductoCarrito
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(288, 200);
+            ClientSize = new Size(481, 200);
+            Controls.Add(btnDisminuirCantidad);
+            Controls.Add(lblDisminuirCantidad);
+            Controls.Add(nupdDisminuirCantidad);
             Controls.Add(btnEliminarProductoCarrito);
             Controls.Add(btnComprar);
             Controls.Add(lblTituloProducto);
@@ -79,6 +117,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Opciones";
             Load += FrmOpcionesSobreProductoCarrito_Load;
+            ((System.ComponentModel.ISupportInitialize)nupdDisminuirCantidad).EndInit();
             ResumeLayout(false);
         }
 
@@ -87,5 +126,8 @@
         private Label lblTituloProducto;
         private Button btnComprar;
         private Button btnEliminarProductoCarrito;
+        private NumericUpDown nupdDisminuirCantidad;
+        private Label lblDisminuirCantidad;
+        private Button btnDisminuirCantidad;
     }
 }

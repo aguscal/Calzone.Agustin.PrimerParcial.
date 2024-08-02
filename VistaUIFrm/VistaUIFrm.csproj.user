@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="FrmCategoriaProductos.cs">
+    <Compile Update="FormDatosComprobante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmCategoriaProductosTrabajador.cs">
+    <Compile Update="FormTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmCrearProductoAuricular.cs">
@@ -25,13 +25,13 @@
     <Compile Update="FrmOpcionesSobreProductoCarrito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmTrabajador.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmVistaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmVistaProductoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmVisualizadorComprobante.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmVisualizadorLog.cs">

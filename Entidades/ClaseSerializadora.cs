@@ -8,12 +8,29 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Newtonsoft;
+using Newtonsoft.Json.Serialization;
 
 namespace Entidades
 {
     public static class ClaseSerializadora
     {
-
+        //ESTE METODO VENDRIA A SER PARA GUARDAR EL CARRITO DE LOS USUARIOS CADA VEZ QEU SE REALIZA UN CAMBIO EN EL MISMO
+        public static void GuardarCarrito(Comprador comprador, string nombreArchivo)
+        {
+            List<Usuario> usuarios = LeerListaUsuariosJson(nombreArchivo);
+            for (int i = 0; i < usuarios.Count; i++)
+            {
+                if (usuarios[i].Email == comprador.Email)
+                {
+                    if (usuarios[i] is Comprador)
+                    {
+                        ((Comprador)usuarios[i]).DictCarrito = comprador.DictCarrito;
+                    }
+                    break;
+                }
+            }
+            EscribirUsuariosJson(usuarios,nombreArchivo);
+        }
         static public void EscribirUsuariosJson(List<Usuario> listaUsuarios, string nombreArchivo)
         {
             using (StreamWriter sw = new StreamWriter(nombreArchivo))
@@ -72,7 +89,7 @@ namespace Entidades
         }
 
 
-        static public int ObtenerSiguienteId()
+        /*static public int ObtenerSiguienteId()
         {
             int ultimoId = 0;
 
@@ -91,10 +108,42 @@ namespace Entidades
 
                 return ultimoId;
             }
-        }
+        }*/
 
+        /*static public int ObtenerSiguienteId()
+        {
+            int ultimoId = 0;
 
+            if (!File.Exists("ListaProductos.json"))
+            {
+                File.Create("ListaProductos.json");
+            }
 
+            using (StreamReader sr = new StreamReader("ListaProductos.json"))
+            {
+                try
+                {
+                    string archivoLeido = sr.ReadToEnd();
+                    JsonSerializerSettings configuracionesJson = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
+                    List<Producto> listaDeSerializada = JsonConvert.DeserializeObject<List<Producto>>(archivoLeido, configuracionesJson);
+
+                    if (listaDeSerializada.Count > 0)
+                    {
+                        Producto ultimoProducto = listaDeSerializada[listaDeSerializada.Count - 1];
+                        ultimoId = ultimoProducto.Id;
+                    }
+                }
+                catch (FileNotFoundException e)
+                {
+                    File.Create("ListaProductos.json");
+
+                    return ultimoId;
+                }
+            }
+
+            return ultimoId;
+        }*/
 
 
         static public void EscribirUsuariosXml(List<Usuario> listaUsuarios,string nombreArchivo)

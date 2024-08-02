@@ -25,7 +25,21 @@ namespace VistaUIFrm
         private void FrmModificarPrecioProducto_Load(object sender, EventArgs e)
         {
             this.lblTituloProducto.Text = productoActualizar.MostrarInfo();
-            this.lblPrecio.Text = $"$ {negocioStock.ObtenerPrecioProductoEnLista(productoActualizar)}";
+            try
+            {
+                this.lblPrecio.Text = $"$ {negocioStock.ObtenerPrecioProductoEnLista(productoActualizar)}";
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Esta opcion no esta disponible.Error al obtener el precio del producto: {ex.Message}");
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MostrarError("Esta opcion no esta disponible.Error al obtener el precio del producto");
+                this.Close();
+            }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -35,7 +49,6 @@ namespace VistaUIFrm
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //validar y cambiar a todos los coincidentes
             decimal nuevoPrecio = this.nUDPrecioNuevo.Value;
 
             if (nuevoPrecio == 0)
@@ -44,23 +57,40 @@ namespace VistaUIFrm
             }
             else
             {
-                DialogResult confirmacion = MessageBox.Show($"Confirma el cambio de todo el stock de este producto a {nuevoPrecio}?", "Comprar producto", MessageBoxButtons.YesNo);
+                DialogResult confirmacion = MessageBox.Show($"Confirma el cambio del precio de este producto a {nuevoPrecio}?", "Cambiar precio producto", MessageBoxButtons.YesNo);
 
                 if(confirmacion == DialogResult.Yes)
                 {
-                    if(negocioStock.ModificarPrecioProductosCoincidentes(productoActualizar, (int)nuevoPrecio))
+                    try
                     {
-                        MessageBox.Show($"Se actualizo el precio a {nuevoPrecio}");
-                        this.lblPrecio.Text = $"$ {negocioStock.ObtenerPrecioProductoEnLista(productoActualizar)}";
-                        this.Close();
+                        if (negocioStock.ModificarPrecioProducto(productoActualizar, (float)nuevoPrecio))
+                        {
+                            MessageBox.Show($"Se actualizo el precio a {nuevoPrecio}");
+                            this.lblPrecio.Text = $"$ {negocioStock.ObtenerPrecioProductoEnLista(productoActualizar)}";
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el precio");
+                            this.Close();
+                        }
                     }
-                    else
+                    catch (ExcepcionConeccion ex)
                     {
-                        MessageBox.Show("No se pudo actualizar el precio");
-                        this.Close();
+                        MostrarError($"Error al modificar el precio del producto: {ex.Message}");
                     }
+                    catch (Exception)
+                    {
+                        MostrarError("Error al modificar el precio del producto");
+                    }
+
                 }
             }
+        }
+
+        private void MostrarError(string mensaje)
+        {
+            MessageBox.Show($"{mensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

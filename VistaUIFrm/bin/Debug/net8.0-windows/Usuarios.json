@@ -1,7 +1,8 @@
 [
   {
     "$type": "Entidades.Comprador, Entidades",
-    "ListaCarrito": [],
+    "DictCarrito": {},
+    "IdComprador": 1,
     "Contrasenia": "laraine123",
     "Email": "laraine0@gmail.com",
     "Nombre": "Laraine",
@@ -9,7 +10,8 @@
   },
   {
     "$type": "Entidades.Comprador, Entidades",
-    "ListaCarrito": [],
+    "DictCarrito": {},
+    "IdComprador": 2,
     "Contrasenia": "abdel123",
     "Email": "abdelttiero1@gmail.com",
     "Nombre": "Abdel",
@@ -17,7 +19,8 @@
   },
   {
     "$type": "Entidades.Comprador, Entidades",
-    "ListaCarrito": [],
+    "DictCarrito": {},
+    "IdComprador": 3,
     "Contrasenia": "denny123",
     "Email": "denny2@gmail.com",
     "Nombre": "Denny",
@@ -25,7 +28,8 @@
   },
   {
     "$type": "Entidades.Comprador, Entidades",
-    "ListaCarrito": [],
+    "DictCarrito": {},
+    "IdComprador": 4,
     "Contrasenia": "Emet123",
     "Email": "emmetf3@gmail.com",
     "Nombre": "Emmet",
@@ -33,7 +37,7 @@
   },
   {
     "$type": "Entidades.Trabajador, Entidades",
-    "Salario": 129929,
+    "Rol": 2,
     "Contrasenia": "rodri123",
     "Email": "rodrigo9@gmail.com",
     "Nombre": "Rodrigo",
@@ -41,7 +45,7 @@
   },
   {
     "$type": "Entidades.Trabajador, Entidades",
-    "Salario": 197857,
+    "Rol": 1,
     "Contrasenia": "denyse123",
     "Email": "denysesnib@gmail.com",
     "Nombre": "Denyse",
@@ -49,7 +53,7 @@
   },
   {
     "$type": "Entidades.Trabajador, Entidades",
-    "Salario": 210080,
+    "Rol": 0,
     "Contrasenia": "jarvis123",
     "Email": "jarviseale@gmail.com",
     "Nombre": "Jarvis",

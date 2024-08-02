@@ -33,10 +33,10 @@ namespace Entidades
             this.hZ = hZ;
             this.conMicrofono = conMicrofono;
             this.inEar = inEar;
-            esInalambrico = false;
-            horasBateria = 0;
-            tiempoDeCarga = 0;
-            esGamer = false;
+            this.esInalambrico = false;
+            this.horasBateria = 0;
+            this.tiempoDeCarga = 0;
+            this.esGamer = false;
         }
 
         public Auricular(string modelo, string marca, string color, float precio, bool cancelacionDeSonido, int dB, int hZ,
@@ -48,7 +48,7 @@ namespace Entidades
 
         public Auricular(string modelo, string marca, string color, float precio, bool cancelacionDeSonido, int dB, int hZ,
             bool conMicrofono,bool inEar, bool esGamer,bool esInalambrico,int horasBateria,int tiempoDeCarga)
-            : this(marca, modelo, color, precio,cancelacionDeSonido,dB,hZ, conMicrofono,inEar,esGamer)
+            : this(modelo, marca, color, precio,cancelacionDeSonido,dB,hZ, conMicrofono,inEar,esGamer)
         {
             this.esInalambrico = esInalambrico;
             this.horasBateria = horasBateria;
@@ -138,7 +138,6 @@ namespace Entidades
             
             sb.Append($"{base.MostrarInfo()}");
             sb.Append($" {color}");
-            sb.Append($" \n${Precio}");
 
             return sb.ToString();
         }

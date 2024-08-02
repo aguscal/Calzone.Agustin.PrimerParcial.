@@ -20,45 +20,72 @@ namespace VistaUIFrm
         public FrmVistaProducto(Producto productoSeleccionado, Usuario usuarioRegistrado, Negocio negocioStock) : base(usuarioRegistrado)
         {
             InitializeComponent();
-            this.usuarioRegistrado = usuarioRegistrado;
             this.productoSeleccionado = productoSeleccionado;
             this.negocioStock = negocioStock;
-
-            this.lblTituloProducto.Text = productoSeleccionado.MostrarInfo();
-            this.lblPrecioProducto.Text = $"${productoSeleccionado.Precio}";
-            this.rtbDescripcionProducto.Text = productoSeleccionado.MostrarDescripcion();
         }
 
         private void btnComprar_Click(object sender, EventArgs e)
-        {                
+        {
             DialogResult confirmacion = MessageBox.Show("Seguro de que quiere comprar?", "Comprar producto", MessageBoxButtons.YesNo);
 
             if (confirmacion == DialogResult.Yes)
             {
-                bool retornoSePudoVender = miNegocio.VenderProducto(productoSeleccionado);
+                try
+                {
+                    if (negocioStock is not null)
+                    {
+                        Producto productoSinStock;
 
-                if (retornoSePudoVender == true)
-                {
-                    //((Comprador)usuarioRegistrado).ListaCarrito.Remove(productoSeleccionado);
-                    cantidadStock = negocioStock.ObtenerCantidadProductosEncontrados(negocioStock, productoSeleccionado);
-                    this.lblStock.Text = $"Stock: {cantidadStock}";
-                    MessageBox.Show("Venta exitosa!");
+                        Dictionary<Producto, int> dictSeleccionCompra = new Dictionary<Producto, int>();
+                        dictSeleccionCompra.Add(productoSeleccionado, 1);
+
+
+                        if (negocioStock.VerificarDisponibilidadProductosSeleccionados(dictSeleccionCompra, out productoSinStock))
+                        {
+                            FormDatosComprobante frmComprobante = new FormDatosComprobante(dictSeleccionCompra, (Comprador)usuarioRegistrado);
+
+                            this.Hide();
+                            DialogResult resultado = frmComprobante.ShowDialog();
+
+                            if (resultado == DialogResult.Cancel || resultado == DialogResult.Yes)
+                            {
+                                this.Refresh();
+                                this.Show();
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No se avanzo con la compra ya que no hay suficiente cantidad del producto {productoSinStock.MostrarInfo()} en stock hay disponibles {negocioStock.ObtenerCantidadProductoBuscado(negocioStock, productoSinStock)} unidades");
+                        }
+
+                    }
+
                 }
-                else
+                catch (ExcepcionConeccion ex)
                 {
-                    MessageBox.Show("No se pudo vender. El producto ya no se encuentra disponible para la venta");
+                    MostrarError($"Error.No se pudo vender el producto: {ex.Message}");
                 }
-            }                       
+                catch (Exception)
+                {
+                    MostrarError("Error.No se pudo vender el producto");
+                }
+
+            }
         }
 
         private void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            //aca si deberia haber un metodo que agregue el producto a la lista del carrito del usuario
             if (usuarioRegistrado is Comprador)
             {
                 Comprador comprador = (Comprador)usuarioRegistrado;
 
-                int cantidadProductosIgualesAlSeleccionadoCarrito = negocioStock.ObtenerCantidadDelProductoIgualesEnLista(comprador.ListaCarrito, productoSeleccionado);
+                int cantidadProductosIgualesAlSeleccionadoCarrito = 0;
+
+                if (comprador.DictCarrito.ContainsKey(productoSeleccionado))
+                {
+                    cantidadProductosIgualesAlSeleccionadoCarrito = comprador.DictCarrito[productoSeleccionado];
+                }
 
                 if (cantidadProductosIgualesAlSeleccionadoCarrito < cantidadStock)
                 {
@@ -81,17 +108,63 @@ namespace VistaUIFrm
 
         protected void FrmVistaProducto_Load(object sender, EventArgs e)
         {
+            this.lblTituloProducto.Text = productoSeleccionado.MostrarInfo();
+            this.lblPrecioProducto.Text = $"${productoSeleccionado.Precio}";
+            this.rtbDescripcionProducto.Text = productoSeleccionado.MostrarDescripcion();
+
             this.dgvProductos.Visible = false;
             this.cmbFiltrarListaPrecio.Visible = false;
             this.lblFiltrar.Visible = false;
-            cantidadStock = negocioStock.ObtenerCantidadProductosEncontrados(negocioStock, productoSeleccionado);
-            this.lblStock.Text = $"Stock: {cantidadStock}";
+            this.lblMarcas.Visible = false;
+            this.cmbMarcas.Visible = false;
+            this.mStripCategorias.Visible = false;
+
+            try
+            {
+                cantidadStock = negocioStock.ObtenerCantidadProductoBuscado(negocioStock, productoSeleccionado);
+                this.lblStock.Text = $"Stock: {cantidadStock}";
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error.No se pudo cargar la cantidad del producto: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error.No se pudo cargar la cantidad del producto");
+            }
+
+            if(productoSeleccionado.Cantidad == 0)
+            {
+                this.btnAgregarCarrito.Enabled = false;
+                this.btnComprar.Enabled = false;
+            }
         }
 
-        protected void FrmVistaProducto_Activated(object sender, EventArgs e)
+        private void MostrarError(string mensaje)
         {
-            cantidadStock = negocioStock.ObtenerCantidadProductosEncontrados(negocioStock, productoSeleccionado);
-            this.lblStock.Text = $"Stock: {cantidadStock}";
+            MessageBox.Show($"{mensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void FrmVistaProducto_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                cantidadStock = negocioStock.ObtenerCantidadProductoBuscado(negocioStock, productoSeleccionado);
+                this.lblStock.Text = $"Stock: {cantidadStock}";
+                if (cantidadStock == 0)
+                {
+                    this.btnAgregarCarrito.Enabled = false;
+                    this.btnComprar.Enabled = false;
+                }
+            }
+            catch (ExcepcionConeccion ex)
+            {
+                MostrarError($"Error.No se pudo cargar la cantidad del producto: {ex.Message}");
+            }
+            catch (Exception)
+            {
+                MostrarError("Error.No se pudo cargar la cantidad del producto");
+            }
         }
     }
 }

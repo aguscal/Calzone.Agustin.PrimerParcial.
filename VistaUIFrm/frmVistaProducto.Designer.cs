@@ -35,16 +35,14 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             lblTituloProducto = new Label();
             lblPrecioProducto = new Label();
             rtbDescripcionProducto = new RichTextBox();
             btnComprar = new Button();
             btnAgregarCarrito = new Button();
-            panel1 = new Panel();
-            lblNombrePagina = new Label();
             lblStock = new Label();
             panelFrmComprador.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCarrito
@@ -54,7 +52,11 @@
             // 
             // cmbFiltrarListaPrecio
             // 
-            cmbFiltrarListaPrecio.Items.AddRange(new object[] { "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio" });
+            cmbFiltrarListaPrecio.Items.AddRange(new object[] { "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio" });
+            // 
+            // cmbMarcas
+            // 
+            cmbMarcas.Items.AddRange(new object[] { "Samsung", "Motorola", "Xiaomi", "Apple", "Sony", "Jbl", "Asus", "Lg", "Philips", "Samsung", "Motorola", "Xiaomi", "Apple", "Sony", "Jbl", "Asus", "Lg", "Philips", "Samsung", "Motorola", "Xiaomi", "Apple", "Sony", "Jbl", "Asus", "Lg", "Philips" });
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -65,37 +67,38 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Tipo";
-            dataGridViewTextBoxColumn2.HeaderText = "Tipo";
+            dataGridViewTextBoxColumn2.DataPropertyName = "Marca";
+            dataGridViewTextBoxColumn2.HeaderText = "Marca";
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "Marca";
-            dataGridViewTextBoxColumn3.HeaderText = "Marca";
+            dataGridViewTextBoxColumn3.DataPropertyName = "Modelo";
+            dataGridViewTextBoxColumn3.HeaderText = "Modelo";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Modelo";
-            dataGridViewTextBoxColumn4.HeaderText = "Modelo";
+            dataGridViewTextBoxColumn4.DataPropertyName = "Color";
+            dataGridViewTextBoxColumn4.HeaderText = "Color";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Color";
-            dataGridViewTextBoxColumn5.HeaderText = "Color";
+            dataGridViewTextBoxColumn5.DataPropertyName = "Precio";
+            dataGridViewTextBoxColumn5.HeaderText = "Precio";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "Precio";
-            dataGridViewTextBoxColumn6.HeaderText = "Precio";
+            dataGridViewTextBoxColumn6.DataPropertyName = "Cantidad";
+            dataGridViewTextBoxColumn6.HeaderText = "Cantidad";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -103,6 +106,13 @@
             dataGridViewTextBoxColumn7.HeaderText = "NombreCompleto";
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "NombreCompleto";
+            dataGridViewTextBoxColumn8.HeaderText = "NombreCompleto";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // lblTituloProducto
             // 
@@ -155,26 +165,6 @@
             btnAgregarCarrito.UseVisualStyleBackColor = true;
             btnAgregarCarrito.Click += btnAgregarCarrito_Click;
             // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveCaptionText;
-            panel1.Controls.Add(lblNombrePagina);
-            panel1.Location = new Point(0, 1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 58);
-            panel1.TabIndex = 5;
-            // 
-            // lblNombrePagina
-            // 
-            lblNombrePagina.BackColor = Color.Black;
-            lblNombrePagina.Font = new Font("Brush Script MT", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblNombrePagina.ForeColor = Color.Lime;
-            lblNombrePagina.Location = new Point(0, 0);
-            lblNombrePagina.Name = "lblNombrePagina";
-            lblNombrePagina.Size = new Size(206, 49);
-            lblNombrePagina.TabIndex = 3;
-            lblNombrePagina.Text = "StarTech";
-            // 
             // lblStock
             // 
             lblStock.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -190,7 +180,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(lblStock);
-            Controls.Add(panel1);
             Controls.Add(btnAgregarCarrito);
             Controls.Add(btnComprar);
             Controls.Add(rtbDescripcionProducto);
@@ -200,17 +189,18 @@
             Text = "FrmVistaProducto";
             Activated += FrmVistaProducto_Activated;
             Load += FrmVistaProducto_Load;
+            Controls.SetChildIndex(panelFrmComprador, 0);
+            Controls.SetChildIndex(btnAtras, 0);
+            Controls.SetChildIndex(lblMarcas, 0);
+            Controls.SetChildIndex(cmbMarcas, 0);
             Controls.SetChildIndex(lblTituloProducto, 0);
             Controls.SetChildIndex(lblPrecioProducto, 0);
             Controls.SetChildIndex(rtbDescripcionProducto, 0);
             Controls.SetChildIndex(btnComprar, 0);
             Controls.SetChildIndex(btnAgregarCarrito, 0);
-            Controls.SetChildIndex(panel1, 0);
             Controls.SetChildIndex(lblStock, 0);
-            Controls.SetChildIndex(panelFrmComprador, 0);
             panelFrmComprador.ResumeLayout(false);
             panelFrmComprador.PerformLayout();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -219,8 +209,6 @@
         private Label lblTituloProducto;
         private Label lblPrecioProducto;
         private RichTextBox rtbDescripcionProducto;
-        private Panel panel1;
-        private Label lblNombrePagina;
         private Label lblStock;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -231,5 +219,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         protected Button btnComprar;
         protected Button btnAgregarCarrito;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

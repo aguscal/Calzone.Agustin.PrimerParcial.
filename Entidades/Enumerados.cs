@@ -9,14 +9,14 @@ namespace Entidades
     public enum EMarcas
     {
         Samsung,
-        Philips,
         Motorola,
-        Jbl,
         Xiaomi,
         Apple,
-        LG,
+        Sony,
+        Jbl,
         Asus,
-        Sony
+        Lg,
+        Philips
     }
 
     public enum EMarcasSmartPhone

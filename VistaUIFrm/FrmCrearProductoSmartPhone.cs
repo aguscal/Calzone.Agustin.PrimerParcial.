@@ -13,16 +13,24 @@ using System.Windows.Forms;
 
 namespace VistaUIFrm
 {
-    public partial class FrmCrearProductoSmartPhone : Form
+    public partial class FrmCrearProductoSmartPhone : Form,IFormsCrearProductos
     {
         Negocio negocioStock;
+        SmartPhoneDAO smartPhoneDAO;
         public FrmCrearProductoSmartPhone()
         {
-            negocioStock = Negocio.Instancia;
             InitializeComponent();
+            try
+            {
+                negocioStock = Negocio.Instancia;
+            }
+            catch (Exception)
+            {
+                MostrarError("Error grave de conexion");
+            }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        public void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
@@ -63,7 +71,7 @@ namespace VistaUIFrm
 
         }
 
-        private void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        public void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cmbMarcas.SelectedItem != null)
             {
@@ -108,123 +116,156 @@ namespace VistaUIFrm
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        public void btnAgregar_Click(object sender, EventArgs e)
         {
-            string marca;
-            string modelo;
-            string color;
-            float precio;
-            int almacenamiento;
-            int memoriaRam;
-            float pulgadasPantalla;
-            int pixelesCamara;
-            int capacidadBateria;
-            bool dualSim = false;
-            bool incluyeCargador = false;
-
-
-            if (this.cmbMarcas.SelectedItem != null)
+            try
             {
+                string marca;
+                string modelo;
+                string color;
+                float precio;
+                int almacenamiento;
+                int memoriaRam;
+                float pulgadasPantalla;
+                int pixelesCamara;
+                int capacidadBateria;
+                bool dualSim = false;
+                bool incluyeCargador = false;
+                bool flagError = false;
+
+
+                if (this.cmbMarcas.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó una marca"); }
                 marca = this.cmbMarcas.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo una marca");
-                return;
-            }
 
-            if (this.cmbModelos.SelectedItem != null)
-            {
+                if (this.cmbModelos.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó un modelo"); }
                 modelo = this.cmbModelos.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo un modelo");
-                return;
-            }
 
-            if (this.cmbColores.SelectedItem != null)
-            {
+                if (this.cmbColores.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó un color"); }
                 color = this.cmbColores.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo un color");
-                return;
-            }
 
-            precio = (float)this.nUDPrecio.Value;
-            if(precio <= 0)
-            {
-                MessageBox.Show("No se cargo el precio");
-                return;
-            }
+                precio = (float)this.nUDPrecio.Value;
+                if (precio <= 0) { throw new ExcepcionDatosIncompletos("No se cargó el precio"); }
 
-            if (this.cmbMemRam.SelectedItem != null)
-            {
-                memoriaRam = (int)cmbMemRam.SelectedItem;
-            }
-            else
-            {
-                MessageBox.Show("No se cargo la cantidad de memoria ram");
-                return;
-            }
 
-            if (this.cmbAlmacenamiento.SelectedItem != null)
-            {
+                if (this.cmbMemRam.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargo la cantidad de memoria ram"); }
+                memoriaRam = (int)this.cmbMemRam.SelectedItem;
+
+                if (this.cmbAlmacenamiento.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargo la cantidad de almacenamiento"); }
                 almacenamiento = (int)cmbAlmacenamiento.SelectedItem;
-            }
-            else
-            {
-                MessageBox.Show("No se cargo la cantidad de almacenamiento");
-                return;
-            }
 
-            if (this.cmbPulgadas.SelectedItem != null)
-            {
+                if (this.cmbPulgadas.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargo la cantidad de pulgadas"); }
                 pulgadasPantalla = (int)cmbPulgadas.SelectedItem;
-            }
-            else
-            {
-                MessageBox.Show("No se cargo la cantidad de pulgadas");
-                return;
-            }
 
-            if (this.cmbPixelesCamara.SelectedItem != null)
-            {
+                if (this.cmbPixelesCamara.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargo la cantidad de pixeles de la camara"); }
                 pixelesCamara = (int)cmbPixelesCamara.SelectedItem;
-            }
-            else
-            {
-                MessageBox.Show("No se cargo la cantidad de pixeles de la camara");
-                return;
-            }
 
-            if (this.cmbCapBateria.SelectedItem != null)
-            {
+                if (this.cmbCapBateria.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargo la cantidad de capacidad de la bateria"); }
                 capacidadBateria = (int)cmbCapBateria.SelectedItem;
+
+                if (this.checkBDualSim.Checked) { dualSim = true; }
+                if (this.checkBIncluyeCargador.Checked) { incluyeCargador = true; }
+
+                SmartPhone smartPhoneNuevo = new SmartPhone(modelo, marca, color, precio, almacenamiento, pulgadasPantalla, pixelesCamara, capacidadBateria, memoriaRam, dualSim, incluyeCargador);
+
+                try
+                {
+                    SmartPhone smartPhoneEnLista = (SmartPhone)negocioStock.ObtenerBuscarProductoCoincidente(smartPhoneNuevo);
+
+                    if(smartPhoneEnLista is not null)
+                    {
+                        float precioEnLista = negocioStock.ObtenerPrecioProductoEnLista(smartPhoneEnLista);
+
+                        if (precioEnLista > 0 && precioEnLista != precio)
+                        {
+                            DialogResult opcion = MessageBox.Show($"El precio ingresado no coincide con el precio en lista, presione Si para cambiar el precio de stock" +
+                                $" o presione No para mantenerlo al precio de lista ${precioEnLista}, Cancel para cancelar", "Confirmacion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                            if (opcion == DialogResult.Cancel) { return; }
+                            else if (opcion == DialogResult.No)
+                            {
+                                smartPhoneNuevo = new SmartPhone(modelo, marca, color, precioEnLista, almacenamiento, pulgadasPantalla, pixelesCamara, capacidadBateria, memoriaRam, dualSim, incluyeCargador);
+                            }
+                            else
+                            {
+                                negocioStock.ModificarPrecioProducto(smartPhoneEnLista, precio);
+                                MessageBox.Show("El precio de stock del producto se ha actualizado!");
+                            }
+                        }
+                    }                    
+                }
+                catch (ExcepcionConeccion ex)
+                {
+                    flagError = true;
+                    MostrarError($"Error al obtener datos de los productos: {ex.Message}");
+                }
+                catch (Exception)
+                {
+                    flagError = true;
+                    MostrarError("Error al obtener datos de los productos");
+                }
+                
+
+                int cantidadACrear = (int)this.nUDCantidadCrear.Value;
+                int cantidadProductosCreados = 0;
+
+                try
+                {
+                    for (int i = 0; i < cantidadACrear; i++)
+                    {
+                        if (negocioStock + smartPhoneNuevo)
+                        {
+                            cantidadProductosCreados++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (ExcepcionConeccion ex)
+                {
+                    flagError = true;
+                    MostrarError($"Error al agregar los productos: {ex.Message}");
+                }
+                catch (Exception)
+                {
+                    flagError = true;
+                    MostrarError("Error al agregar los productos");
+                }
+                
+
+                if (cantidadProductosCreados == cantidadACrear)
+                {
+                    MessageBox.Show($"Se agregaron correctamente los {cantidadProductosCreados} productos");
+                }
+                else
+                {
+                    if (negocioStock is null || flagError == true)
+                    {
+                        MessageBox.Show($"Se agregaron {cantidadProductosCreados} productos , {cantidadACrear - cantidadProductosCreados} productos no se agregaron correctamente porque hay un problema de conexion");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Se agregaron {cantidadProductosCreados} productos , {cantidadACrear - cantidadProductosCreados} productos no se agregaron correctamente porque superó el límite de stock");
+                    }
+                        
+                }
+
             }
-            else
+            catch (ExcepcionDatosIncompletos ex)
             {
-                MessageBox.Show("No se cargo la cantidad de capacidad de la bateria");
-                return;
+                MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (this.checkBDualSim.Checked) { dualSim = true; }
-            if (this.checkBIncluyeCargador.Checked) { incluyeCargador = true; }
-
-            SmartPhone smartPhoneNuevo = new SmartPhone(modelo,marca,color,precio,almacenamiento,pulgadasPantalla,pixelesCamara,capacidadBateria,memoriaRam,dualSim,incluyeCargador);
-
-            MessageBox.Show(smartPhoneNuevo.ToString());
-
-            if (negocioStock + smartPhoneNuevo)
+            catch (Exception ex)
             {
-                MessageBox.Show("El producto se agrego correctamente");
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("El producto no se agrego correctamente porque supero el limite de stock");
-            }
+            
+        }
+
+        public void MostrarError(string mensaje)
+        {
+            MessageBox.Show($"{mensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

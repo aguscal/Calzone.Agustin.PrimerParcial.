@@ -28,10 +28,11 @@
         /// </summary>
         protected void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
+            mStripCategorias = new MenuStrip();
             smartPhonesToolStripMenuItem = new ToolStripMenuItem();
             auricularesToolStripMenuItem = new ToolStripMenuItem();
             monitoresToolStripMenuItem = new ToolStripMenuItem();
+            mostrarTodoToolStripMenuItem = new ToolStripMenuItem();
             dgvProductos = new DataGridView();
             panelFrmComprador = new Panel();
             lblFiltrar = new Label();
@@ -41,20 +42,23 @@
             btnCarrito = new Button();
             label1 = new Label();
             btnAtras = new Button();
-            menuStrip1.SuspendLayout();
+            lblMarcas = new Label();
+            cmbMarcas = new ComboBox();
+            btnComprobantes = new Button();
+            mStripCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             panelFrmComprador.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // mStripCategorias
             // 
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { smartPhonesToolStripMenuItem, auricularesToolStripMenuItem, monitoresToolStripMenuItem });
-            menuStrip1.Location = new Point(3, 55);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(368, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            mStripCategorias.Dock = DockStyle.None;
+            mStripCategorias.Items.AddRange(new ToolStripItem[] { smartPhonesToolStripMenuItem, auricularesToolStripMenuItem, monitoresToolStripMenuItem, mostrarTodoToolStripMenuItem });
+            mStripCategorias.Location = new Point(3, 55);
+            mStripCategorias.Name = "mStripCategorias";
+            mStripCategorias.Size = new Size(337, 24);
+            mStripCategorias.TabIndex = 0;
+            mStripCategorias.Text = "menuStrip1";
             // 
             // smartPhonesToolStripMenuItem
             // 
@@ -77,26 +81,36 @@
             monitoresToolStripMenuItem.Text = "Monitores";
             monitoresToolStripMenuItem.Click += monitoresToolStripMenuItem_Click;
             // 
+            // mostrarTodoToolStripMenuItem
+            // 
+            mostrarTodoToolStripMenuItem.Name = "mostrarTodoToolStripMenuItem";
+            mostrarTodoToolStripMenuItem.Size = new Size(89, 20);
+            mostrarTodoToolStripMenuItem.Text = "Mostrar Todo";
+            mostrarTodoToolStripMenuItem.Click += mostrarTodoToolStripMenuItem_Click;
+            // 
             // dgvProductos
             // 
             dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProductos.BackgroundColor = Color.LightCyan;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Location = new Point(12, 112);
+            dgvProductos.Location = new Point(79, 112);
             dgvProductos.Name = "dgvProductos";
-            dgvProductos.Size = new Size(776, 326);
+            dgvProductos.ReadOnly = true;
+            dgvProductos.Size = new Size(709, 326);
             dgvProductos.TabIndex = 1;
             dgvProductos.CellClick += dgvProductos_CellClick;
             // 
             // panelFrmComprador
             // 
+            panelFrmComprador.Controls.Add(btnComprobantes);
             panelFrmComprador.Controls.Add(lblFiltrar);
             panelFrmComprador.Controls.Add(cmbFiltrarListaPrecio);
             panelFrmComprador.Controls.Add(lblUsuarioRegistrado);
             panelFrmComprador.Controls.Add(label2);
             panelFrmComprador.Controls.Add(btnCarrito);
             panelFrmComprador.Controls.Add(label1);
-            panelFrmComprador.Controls.Add(menuStrip1);
+            panelFrmComprador.Controls.Add(mStripCategorias);
             panelFrmComprador.Location = new Point(1, 3);
             panelFrmComprador.Name = "panelFrmComprador";
             panelFrmComprador.Size = new Size(800, 84);
@@ -112,6 +126,7 @@
             // 
             // cmbFiltrarListaPrecio
             // 
+            cmbFiltrarListaPrecio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarListaPrecio.FormattingEnabled = true;
             cmbFiltrarListaPrecio.Location = new Point(646, 55);
             cmbFiltrarListaPrecio.Name = "cmbFiltrarListaPrecio";
@@ -178,23 +193,60 @@
             btnAtras.UseVisualStyleBackColor = false;
             btnAtras.Click += btnAtras_Click;
             // 
+            // lblMarcas
+            // 
+            lblMarcas.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMarcas.Location = new Point(1, 137);
+            lblMarcas.Name = "lblMarcas";
+            lblMarcas.Size = new Size(72, 23);
+            lblMarcas.TabIndex = 4;
+            lblMarcas.Text = "Marcas";
+            // 
+            // cmbMarcas
+            // 
+            cmbMarcas.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMarcas.FormattingEnabled = true;
+            cmbMarcas.Location = new Point(1, 164);
+            cmbMarcas.Name = "cmbMarcas";
+            cmbMarcas.Size = new Size(72, 23);
+            cmbMarcas.TabIndex = 5;
+            cmbMarcas.SelectedIndexChanged += cmbMarcas_SelectedIndexChanged;
+            // 
+            // btnComprobantes
+            // 
+            btnComprobantes.BackColor = Color.Black;
+            btnComprobantes.FlatAppearance.BorderColor = Color.Black;
+            btnComprobantes.FlatAppearance.BorderSize = 0;
+            btnComprobantes.FlatStyle = FlatStyle.Flat;
+            btnComprobantes.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnComprobantes.ForeColor = SystemColors.ButtonHighlight;
+            btnComprobantes.Location = new Point(529, 19);
+            btnComprobantes.Name = "btnComprobantes";
+            btnComprobantes.Size = new Size(139, 30);
+            btnComprobantes.TabIndex = 8;
+            btnComprobantes.Text = "Comprobantes";
+            btnComprobantes.UseVisualStyleBackColor = false;
+            btnComprobantes.Click += btnComprobantes_Click;
+            // 
             // FrmComprador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbMarcas);
+            Controls.Add(lblMarcas);
             Controls.Add(btnAtras);
             Controls.Add(panelFrmComprador);
             Controls.Add(dgvProductos);
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = mStripCategorias;
             Name = "FrmComprador";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmComprador";
             FormClosing += FrmComprador_FormClosing;
             Load += FormComprador_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            mStripCategorias.ResumeLayout(false);
+            mStripCategorias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
             panelFrmComprador.ResumeLayout(false);
             panelFrmComprador.PerformLayout();
@@ -203,7 +255,7 @@
 
         #endregion
 
-        protected MenuStrip menuStrip1;
+        protected MenuStrip mStripCategorias;
         protected ToolStripMenuItem smartPhonesToolStripMenuItem;
         protected ToolStripMenuItem auricularesToolStripMenuItem;
         protected ToolStripMenuItem monitoresToolStripMenuItem;
@@ -214,7 +266,11 @@
         protected Label lblUsuarioRegistrado;
         protected DataGridView dgvProductos;
         protected ComboBox cmbFiltrarListaPrecio;
-        private Button btnAtras;
         protected Label lblFiltrar;
+        private ToolStripMenuItem mostrarTodoToolStripMenuItem;
+        protected Label lblMarcas;
+        protected ComboBox cmbMarcas;
+        protected Button btnAtras;
+        protected Button btnComprobantes;
     }
 }

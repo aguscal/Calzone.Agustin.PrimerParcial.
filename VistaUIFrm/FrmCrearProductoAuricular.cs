@@ -11,16 +11,24 @@ using Entidades;
 
 namespace VistaUIFrm
 {
-    public partial class FrmCrearProductoAuricular : Form
+    public partial class FrmCrearProductoAuricular : Form,IFormsCrearProductos
     {
         Negocio negocioStock;
+        AuricularDAO auricularDAO;
         public FrmCrearProductoAuricular()
         {
-            negocioStock = Negocio.Instancia;
             InitializeComponent();
+            try
+            {
+                negocioStock = Negocio.Instancia;
+            }
+            catch(Exception)
+            {
+                MostrarError("Error grave de conexion");
+            }
         }
 
-        private void checkBInalambrico_CheckedChanged(object sender, EventArgs e)
+        public void checkBInalambrico_CheckedChanged(object sender, EventArgs e)
         {
             if (this.checkBInalambrico.Checked)
             {
@@ -34,111 +42,173 @@ namespace VistaUIFrm
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        
+        public void btnAgregar_Click(object sender, EventArgs e)
         {
-            string marca;
-            string modelo;
-            string color;
-            float precio;
-            int db;
-            int hz;
-            int tiempoCarga;
-            int duracionBateria;
-            bool esGamer = false;
-            bool conMicrofono = false;
-            bool inEar = false;
-            bool inalabrico = false;
-            bool cancelacion = false;
-            Auricular auricularNuevo;
-
-            if (this.cmbMarcas.SelectedItem != null)
+            try
             {
+                string marca;
+                string modelo;
+                string color;
+                float precio;
+                int db;
+                int hz;
+                int tiempoCarga;
+                int duracionBateria;
+                bool esGamer = false;
+                bool conMicrofono = false;
+                bool inEar = false;
+                bool inalabrico = false;
+                bool cancelacion = false;
+                Auricular auricularNuevo;
+                bool flagError = false;
+
+                if (this.cmbMarcas.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó una marca"); } 
                 marca = this.cmbMarcas.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo una marca");
-                return;
-            }
 
-            if (this.cmbModelos.SelectedItem != null)
-            {
+                if (this.cmbModelos.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó un modelo"); }
                 modelo = this.cmbModelos.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo un modelo");
-                return;
-            }
 
-            if (this.cmbColores.SelectedItem != null)
-            {
+                if (this.cmbColores.SelectedItem == null) { throw new ExcepcionDatosIncompletos("No se cargó un color"); }                    
                 color = this.cmbColores.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No se cargo un color");
-                return;
-            }
 
-            db = (int)this.nUDDb.Value;
-            hz = (int)this.nUDHz.Value;
-            precio = (float)this.nUDPrecio.Value;
-            tiempoCarga = (int)this.nUDTiempoCarga.Value;
-            duracionBateria = (int)this.nUDHorasBateria.Value;
+                db = (int)this.nUDDb.Value;
+                hz = (int)this.nUDHz.Value;
+                precio = (float)this.nUDPrecio.Value;
+                tiempoCarga = (int)this.nUDTiempoCarga.Value;
+                duracionBateria = (int)this.nUDHorasBateria.Value;
 
-            if (this.checkBInalambrico.Checked) { inalabrico = true; }
+                if (this.checkBInalambrico.Checked) { inalabrico = true; }                   
 
-            if (inalabrico)
-            {
-                if (duracionBateria == 0 || tiempoCarga == 0)
+                if (inalabrico)
                 {
-                    MessageBox.Show("No se cargo la duracion de bateria o el tiempo de carga");
-                    return;
+                    if (duracionBateria == 0 || tiempoCarga == 0) { throw new ExcepcionDatosIncompletos("No se cargó la duración de batería o el tiempo de carga"); }                       
                 }
-            }
 
-            if (precio <= 0)
-            {
-                MessageBox.Show("No se cargo el precio");
-                return;
-            }
+                if (precio <= 0) { throw new ExcepcionDatosIncompletos("No se cargó el precio"); }                    
 
-            if (db <= 0 || hz <= 0)
-            {
-                MessageBox.Show("No se cargo db o hz");
-                return;
-            }
+                if (db <= 0 || hz <= 0) { throw new ExcepcionDatosIncompletos("No se cargó dB o Hz"); }                   
 
-            if (this.checkBCancelacion.Checked) { cancelacion = true; }
-            if (this.checkBConMic.Checked) { conMicrofono = true; }
-            if (this.checkBEsGamer.Checked) { esGamer = true; }
-            if (this.checkBInEar.Checked) { inEar = true; }
+                if (this.checkBCancelacion.Checked) { cancelacion = true; }
 
-            if (inalabrico)
-            {
-                auricularNuevo = new Auricular(modelo, marca, color, precio, cancelacion, db, hz, conMicrofono, inEar, esGamer, inalabrico, duracionBateria, tiempoCarga);
-            }
-            else
-            {
-                auricularNuevo = new Auricular(modelo, marca, color, precio, cancelacion, db, hz, conMicrofono, inEar, esGamer);
-            }
-            MessageBox.Show(auricularNuevo.ToString());
+                if (this.checkBConMic.Checked) { conMicrofono = true; }
 
-            if (negocioStock + auricularNuevo)
-            {
-                MessageBox.Show("El producto se agrego correctamente");
-            }
-            else
-            {
-                MessageBox.Show("El producto no se agrego correctamente porque supero el limite de stock");
-            }
-            //negocioStock.ListaProductos.Add(auricularNuevo);
+                if (this.checkBEsGamer.Checked) { esGamer = true; }
 
-        }
+                if (this.checkBInEar.Checked) { inEar = true; }
+
+                if (inalabrico)
+                {
+                    auricularNuevo = new Auricular(modelo, marca, color, precio, cancelacion, db, hz, conMicrofono, inEar, esGamer, inalabrico, duracionBateria, tiempoCarga);
+                }
+                else
+                {
+                    auricularNuevo = new Auricular(modelo, marca, color, precio, cancelacion, db, hz, conMicrofono, inEar, esGamer);
+                }
+
+                try
+                {
+                    Auricular auricularEnLista = (Auricular)negocioStock.ObtenerBuscarProductoCoincidente(auricularNuevo);
+
+                    if (auricularEnLista is not null)
+                    {
+                        float precioEnLista = negocioStock.ObtenerPrecioProductoEnLista(auricularEnLista);
+
+                        if (precioEnLista > 0 && precioEnLista != precio)
+                        {
+                            DialogResult opcion = MessageBox.Show($"El precio ingresado no coincide con el precio en lista, presione Si para cambiar el precio de stock" +
+                                $" o presione No para mantenerlo al precio de lista ${precioEnLista}, Cancel para cancelar", "Confirmacion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                            if (opcion == DialogResult.Cancel) { return; }
+                            else if (opcion == DialogResult.No)
+                            {
+                                if (inalabrico)
+                                {
+                                    auricularNuevo = new Auricular(modelo, marca, color, precioEnLista, cancelacion, db, hz, conMicrofono, inEar, esGamer, inalabrico, duracionBateria, tiempoCarga);
+                                }
+                                else
+                                {
+                                    auricularNuevo = new Auricular(modelo, marca, color, precioEnLista, cancelacion, db, hz, conMicrofono, inEar, esGamer);
+                                }
+                            }
+                            else
+                            {
+                                negocioStock.ModificarPrecioProducto(auricularEnLista, precio);
+                                MessageBox.Show("El precio de stock del producto se ha actualizado!");
+                            }
+                        }
+                    }
+                }
+                catch (ExcepcionConeccion ex)
+                {
+                    flagError = true;
+                    MostrarError($"Error al obtener datos de los productos: {ex.Message}");
+                }
+                catch (Exception)
+                {
+                    flagError = true;
+                    MostrarError("Error al obtener datos de los productos");
+                }
+
+                int cantidadACrear = (int)this.nUDCantidadCrear.Value;
+                int cantidadProductosCreados = 0;
+
+                try
+                {
+                    for (int i = 0; i < cantidadACrear; i++)
+                    {
+                        if (negocioStock + auricularNuevo)
+                        {
+                            cantidadProductosCreados++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (ExcepcionConeccion ex)
+                {
+                    flagError = true;
+                    MostrarError($"Error al agregar los productos: {ex.Message}");
+                }
+                catch (Exception)
+                {
+                    flagError = true;
+                    MostrarError("Error al agregar los productos");
+                }
+
+
+                if (cantidadProductosCreados == cantidadACrear)
+                {
+                    MessageBox.Show($"Se agregaron correctamente los {cantidadProductosCreados} productos");
+                }else
+                {
+                    if (negocioStock is null || flagError == true)
+                    {
+                        MessageBox.Show($"Se agregaron {cantidadProductosCreados} productos , {cantidadACrear - cantidadProductosCreados} productos no se agregaron correctamente porque hay un problema de conexion");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Se agregaron {cantidadProductosCreados} productos , {cantidadACrear - cantidadProductosCreados} productos no se agregaron correctamente porque superó el límite de stock");
+                    }                   
+                }                
+            }
+            catch (ExcepcionDatosIncompletos ex)
+            {
+                MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }           
 
         private void FrmCrearProductoAuricular_Load(object sender, EventArgs e)
         {
+            this.panelTiempoCarga.Visible = false;
+            this.panelBateria.Visible = false;
+
             foreach (var marcas in Enum.GetValues(typeof(EMarcasAuricular)))
             {
                 this.cmbMarcas.Items.Add(marcas);
@@ -150,7 +220,7 @@ namespace VistaUIFrm
             }
         }
 
-        private void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        public void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cmbMarcas.SelectedItem != null)
             {
@@ -186,9 +256,14 @@ namespace VistaUIFrm
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        public void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        public void MostrarError(string mensaje)
+        {
+            MessageBox.Show($"{mensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

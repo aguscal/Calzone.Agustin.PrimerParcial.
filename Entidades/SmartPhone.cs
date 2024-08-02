@@ -42,7 +42,7 @@ namespace Entidades
         }
 
         public SmartPhone(string modelo, string marca, string color, float precio, int almacenamiento, float pulgadasPantalla,
-            int pixelesCamara, int bateria, int memoriaRam, bool dualSim, bool incluyeCargador)
+            int pixelesCamara, int bateria, int memoriaRam,bool dualSim, bool incluyeCargador)
             : this(marca, modelo, color, precio, almacenamiento, pulgadasPantalla, pixelesCamara, bateria, memoriaRam,dualSim)
         {
             this.incluyeCargador = incluyeCargador;
@@ -104,7 +104,7 @@ namespace Entidades
             return !(s1 == s2);
         }
 
-        public override string MostrarInfo()//este metodo podria ir dentro del ovewrride del tostring
+        public override string MostrarInfo()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -113,7 +113,6 @@ namespace Entidades
             sb.Append($" {almacenamiento} Gb");
             sb.Append($" {color}");
             sb.Append($" {memoriaRam} Gb Ram");
-            sb.AppendLine($" \n${Precio}");
 
             return sb.ToString();
         }

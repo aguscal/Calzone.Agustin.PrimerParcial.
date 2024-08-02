@@ -88,15 +88,18 @@ namespace Entidades
         // si el usuario esta registrado lo retorna , cosao contrario retorna null
         public static Usuario VerificarUsuarioRegistrado(string email,string contrasenia)
         {
-            List<Usuario> listaUsuarios = ClaseSerializadora.LeerListaUsuariosJson("Usuarios.json");
-
-            foreach (var usuario in listaUsuarios)
+            if(!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contrasenia)) 
             {
-                if (usuario.Email == email && usuario.Contrasenia == contrasenia)
+                List<Usuario> listaUsuarios = ClaseSerializadora.LeerListaUsuariosJson("Usuarios.json");
+
+                foreach (var usuario in listaUsuarios)
                 {
-                    return usuario;
+                    if (usuario.Email == email && usuario.Contrasenia == contrasenia)
+                    {
+                        return usuario;
+                    }
                 }
-            }
+            }            
 
             return null;
         }

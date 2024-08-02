@@ -7,26 +7,29 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Trabajador:Usuario
+    public enum RolTrabajador
     {
-        int salario;
-
-        public int Salario { get { return salario; } set{ salario = value; } }
-
+        Vendedor,
+        Supervisor,
+        Administrador
+    }
+    public class Trabajador : Usuario
+    {
+        RolTrabajador rolTrabajador;
         public Trabajador()
         {
 
         }
-        public Trabajador(string mail, string pass, string nombre, string apellido, int salario) : base(mail,pass,nombre, apellido)
+        public Trabajador(string mail, string pass, string nombre, string apellido,RolTrabajador rolTrabajador) : base(mail, pass, nombre, apellido)
         {
-            this.salario = salario;
-        }             
+            this.rolTrabajador = rolTrabajador;
+        }
+        public RolTrabajador Rol {get { return rolTrabajador; }set { rolTrabajador = value; } }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append(base.ToString());
-            sb.AppendLine($"Salario: {Salario}");
 
             return sb.ToString();
         }

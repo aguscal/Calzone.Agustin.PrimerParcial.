@@ -35,9 +35,11 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             lblNoHayProductosCarrito = new Label();
             btnVaciarCarrito = new Button();
             lblInfoOpciones = new Label();
+            btnComprarTodo = new Button();
             panelFrmComprador.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +50,11 @@
             // 
             // cmbFiltrarListaPrecio
             // 
-            cmbFiltrarListaPrecio.Items.AddRange(new object[] { "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio" });
+            cmbFiltrarListaPrecio.Items.AddRange(new object[] { "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio", "Menor precio", "Mayor precio" });
+            // 
+            // cmbMarcas
+            // 
+            cmbMarcas.Items.AddRange(new object[] { "Samsung", "Motorola", "Xiaomi", "Apple", "Sony", "Jbl", "Asus", "Lg", "Philips" });
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -90,13 +96,21 @@
             dataGridViewTextBoxColumn6.DataPropertyName = "Precio";
             dataGridViewTextBoxColumn6.HeaderText = "Precio";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "NombreCompleto";
-            dataGridViewTextBoxColumn7.HeaderText = "NombreCompleto";
+            dataGridViewTextBoxColumn7.DataPropertyName = "Cantidad";
+            dataGridViewTextBoxColumn7.HeaderText = "Cantidad";
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "NombreCompleto";
+            dataGridViewTextBoxColumn8.HeaderText = "NombreCompleto";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // lblNoHayProductosCarrito
             // 
@@ -131,11 +145,24 @@
             lblInfoOpciones.TabIndex = 6;
             lblInfoOpciones.Text = "Info: Puede seleccionar el producto individualmente para comprar o eliminar del carrito.";
             // 
+            // btnComprarTodo
+            // 
+            btnComprarTodo.BackColor = Color.PaleGreen;
+            btnComprarTodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnComprarTodo.Location = new Point(647, 389);
+            btnComprarTodo.Name = "btnComprarTodo";
+            btnComprarTodo.Size = new Size(141, 36);
+            btnComprarTodo.TabIndex = 7;
+            btnComprarTodo.Text = "Comprar Todo";
+            btnComprarTodo.UseVisualStyleBackColor = false;
+            btnComprarTodo.Click += btnComprarTodo_Click;
+            // 
             // FrmGestionListaCarritoUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnComprarTodo);
             Controls.Add(lblInfoOpciones);
             Controls.Add(btnVaciarCarrito);
             Controls.Add(lblNoHayProductosCarrito);
@@ -144,9 +171,13 @@
             Activated += FrmGestionListaCarritoUsuario_Activated;
             Load += FrmGestionListaCarritoUsuario_Load;
             Controls.SetChildIndex(panelFrmComprador, 0);
+            Controls.SetChildIndex(btnAtras, 0);
+            Controls.SetChildIndex(lblMarcas, 0);
+            Controls.SetChildIndex(cmbMarcas, 0);
             Controls.SetChildIndex(lblNoHayProductosCarrito, 0);
             Controls.SetChildIndex(btnVaciarCarrito, 0);
             Controls.SetChildIndex(lblInfoOpciones, 0);
+            Controls.SetChildIndex(btnComprarTodo, 0);
             panelFrmComprador.ResumeLayout(false);
             panelFrmComprador.PerformLayout();
             ResumeLayout(false);
@@ -164,5 +195,7 @@
         private Label lblNoHayProductosCarrito;
         private Button btnVaciarCarrito;
         private Label lblInfoOpciones;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private Button btnComprarTodo;
     }
 }
